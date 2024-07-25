@@ -1,4 +1,5 @@
 "use client"
+
 import { sendRecipe } from "@/lib/actions";
 import { useFormState } from 'react-dom';
 
@@ -9,11 +10,11 @@ interface RecipeFormData {
 }
 
 const AddRecipe = async () => {
-    const [state, formAction] = useFormState(sendRecipe, undefined);
+    //const [state, formAction] = useFormState(sendRecipe, {message:""});
     return(
         <main>
             <h1>Add a New Recipe</h1>
-            <form action={formAction}>
+            <form>
                 <div>
                     <label htmlFor="title">Title</label>
                     <input
@@ -41,6 +42,7 @@ const AddRecipe = async () => {
                     />
                 </div>
                 <button type="submit">Add Recipe</button>
+                
             </form>
         </main>
     )

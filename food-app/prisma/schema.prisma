@@ -15,3 +15,21 @@ model Post {
   content   String?
   author    String
 }
+
+model Kontakt {
+  id      Int    @id @default(autoincrement())
+  email   String
+  telefon String
+  adres   String
+}
+
+model AboutUs {
+  id Int @id @default(autoincrement())
+  content String
+}
+
+model Offer {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+}

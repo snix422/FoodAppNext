@@ -1,4 +1,4 @@
-'use client'
+"use server"
 
 import { redirect } from "next/navigation";
 import { sendMeal } from "./meals";
