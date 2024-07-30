@@ -25,11 +25,35 @@ model Kontakt {
 
 model AboutUs {
   id Int @id @default(autoincrement())
-  content String
+  shortContent String
+  lognContent String
 }
 
 model Offer {
   id Int @id @default(autoincrement())
   title String
   description String
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      String   
+  createdAt DateTime @default(now())
+  sessions  Session[]
+}
+
+model Session {
+  id            Int      @id @default(autoincrement())
+  sessionToken  String   @unique
+  userId        Int
+  expires       DateTime
+  user          User     @relation(fields: [userId], references: [id])
+}
+
+model VerificationToken {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  expires    DateTime
 }

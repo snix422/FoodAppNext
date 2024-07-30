@@ -1,7 +1,10 @@
+
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
+import { SessionProvider } from "next-auth/react";
+import SessionProviderWrapper from "@/components/header/SessionProviderWrapper/SessionProviderWrapper";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
+        <SessionProviderWrapper>
         <Header />
         {children}
+        </SessionProviderWrapper>
         </body>
     </html>
   );

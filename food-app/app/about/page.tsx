@@ -1,8 +1,24 @@
-const About = () => {
+const getData = async () => {
+    try {
+        const res = await fetch('http://localhost:3000/api/getAboutUs');
+        if (!res.ok) {
+            throw new Error('Failed to fetch');
+        }
+        return res.json();
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return { lognContent: 'No content available' };
+    }
+}
+
+const About = async () => {
+    const data = await getData();
     return(
-        <main>
-            <h1>O nas</h1>
-        </main>
+        <>
+        <h1>O nas</h1>
+        <p>{data?.id}</p>
+        </>
     )
 }
+
 export default About
