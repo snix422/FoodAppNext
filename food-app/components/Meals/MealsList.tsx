@@ -15,7 +15,7 @@ const MealsList = ({meals}:{meals:any}) => {
     },[meals])
 
     return(
-        <div className="flex flex-col flex-wrap items-center gap-4">
+        <div className="flex flex-col w-[100vw] flex-wrap items-center gap-4">
             {searchTerm || mealType ? <h2>Wyszukanie dla:</h2> : null}
             {searchTerm ? <h3>dla frazy: {searchTerm}</h3> : null}
             {mealType ? <h3>dla typu posiłku: {MealTypeTranslation[mealType]}</h3>: null}

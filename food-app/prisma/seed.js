@@ -217,7 +217,7 @@ export async function main() {
                 preparation: 'Gotuj płatki owsiane w mleku, dodaj pokrojone owoce i orzechy.',
                 ingredients: ['Płatki owsiane', 'Mleko', 'Jagody', 'Banan', 'Orzechy', 'Miód'],
                 type: MealType.BREAKFAST,
-                image
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722611646/muesli-4212060_1280_cd5ukk.jpg"
             },
             {
                 title: 'Jajecznica z Warzywami',
@@ -229,6 +229,7 @@ export async function main() {
                 preparation: 'Smaż jajka z pokrojonymi warzywami na patelni.',
                 ingredients: ['Jaja', 'Papryka', 'Pomidory', 'Cebula', 'Oliwa z oliwek'],
                 type: MealType.BREAKFAST,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675154/meal2_tzrwej.jpg"
             },
             {
                 title: 'Smoothie Bananowo-Szpinakowe',
@@ -240,6 +241,7 @@ export async function main() {
                 preparation: 'Blenduj banana, szpinak i jogurt naturalny.',
                 ingredients: ['Banan', 'Szpinak', 'Jogurt naturalny'],
                 type: MealType.BREAKFAST,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675165/meal3_kxbkk9.jpg"
             },
             {
                 title: 'Tosty z Awokado i Jajkiem',
@@ -251,6 +253,7 @@ export async function main() {
                 preparation: 'Posmaruj tosty pastą z awokado i dodaj pokrojone jajko.',
                 ingredients: ['Chleb pełnoziarnisty', 'Awokado', 'Jajko', 'Sól', 'Pieprz'],
                 type: MealType.BREAKFAST,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675173/meal4_sahoxs.jpg"
             },
             // Drugie Śniadania
             {
@@ -263,6 +266,7 @@ export async function main() {
                 preparation: 'Wymieszaj jogurt z musli i dodaj pokrojone owoce.',
                 ingredients: ['Jogurt naturalny', 'Musli', 'Owoce sezonowe'],
                 type: MealType.SECOND_BREAKFAST,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675182/meal5_jrqpys.jpg"
             },
             {
                 title: 'Kanapki z Chudą Wędliną i Warzywami',
@@ -274,6 +278,7 @@ export async function main() {
                 preparation: 'Złóż wędlinę i warzywa między kromki chleba.',
                 ingredients: ['Chleb pełnoziarnisty', 'Wędliny', 'Sałata', 'Pomidory', 'Ogórek'],
                 type: MealType.SECOND_BREAKFAST,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675193/meal6_lxm00e.jpg"
             },
             {
                 title: 'Sałatka Owocowa z Orzechami',
@@ -285,6 +290,7 @@ export async function main() {
                 preparation: 'Pokrój owoce i wymieszaj z orzechami.',
                 ingredients: ['Owoce sezonowe', 'Orzechy'],
                 type: MealType.SECOND_BREAKFAST,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675200/meal7_xpbvuj.jpg"
             },
             {
                 title: 'Chia Pudding z Owocami',
@@ -296,6 +302,7 @@ export async function main() {
                 preparation: 'Wymieszaj nasiona chia z mlekiem i odstaw na kilka godzin, następnie dodaj owoce.',
                 ingredients: ['Nasiona chia', 'Mleko', 'Owoce'],
                 type: MealType.SECOND_BREAKFAST,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675207/meal8_u0pro4.jpg"
             },
             // Obiady
             {
@@ -308,6 +315,7 @@ export async function main() {
                 preparation: 'Smaż kurczaka w sosie pomidorowym, podawaj z ugotowanym ryżem.',
                 ingredients: ['Kurczak', 'Sos pomidorowy', 'Ryż', 'Przyprawy'],
                 type: MealType.LUNCH,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675213/meal9_q59sk5.jpg"
             },
             {
                 title: 'Sałatka Cezar z Kurczakiem',
@@ -319,6 +327,7 @@ export async function main() {
                 preparation: 'Wymieszaj sałatę, kurczaka, grzanki i sos Cezar.',
                 ingredients: ['Sałata', 'Grillowany kurczak', 'Grzanki', 'Sos Cezar'],
                 type: MealType.LUNCH,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675221/meal10_l9o6cc.jpg"
             },
             {
                 title: 'Spaghetti Bolognese',
@@ -330,6 +339,7 @@ export async function main() {
                 preparation: 'Gotuj makaron i sos bolognese, wymieszaj przed podaniem.',
                 ingredients: ['Makaron spaghetti', 'Mięso mielone', 'Sos pomidorowy', 'Cebula', 'Przyprawy'],
                 type: MealType.LUNCH,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675229/meal11_rs81b2.jpg"
             },
             {
                 title: 'Kurczak Tandoori z Warzywami',
@@ -341,6 +351,7 @@ export async function main() {
                 preparation: 'Marynuj kurczaka w przyprawach tandoori, piecz z warzywami.',
                 ingredients: ['Kurczak', 'Przyprawy tandoori', 'Warzywa (np. papryka, cukinia)'],
                 type: MealType.LUNCH,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675255/meal12_zxbqzr.jpg"
             },
             {
                 title: 'Zupa Brokułowa z Grzankami',
@@ -352,6 +363,7 @@ export async function main() {
                 preparation: 'Gotuj brokuły, zmiksuj na krem, podawaj z grzankami.',
                 ingredients: ['Brokuły', 'Cebula', 'Bulion', 'Grzanki'],
                 type: MealType.LUNCH,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675263/meal13_tcjwkh.jpg"
             },
             // Kolacje
             {
@@ -364,6 +376,7 @@ export async function main() {
                 preparation: 'Piecz łosoś z warzywami w piekarniku.',
                 ingredients: ['Łosoś', 'Warzywa (np. brokuły, marchewka)', 'Przyprawy'],
                 type: MealType.DINNER,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675269/meal14_owdwbv.jpg"
             },
             {
                 title: 'Tortilla z Kurczakiem i Warzywami',
@@ -375,6 +388,7 @@ export async function main() {
                 preparation: 'Zawijaj grillowanego kurczaka, warzywa i sos w tortilli.',
                 ingredients: ['Tortilla', 'Kurczak', 'Warzywa (np. papryka, cebula)', 'Sos jogurtowy'],
                 type: MealType.DINNER,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675282/meal15_umg8wn.jpg"
             },
             {
                 title: 'Makaron z Warzywami i Serem',
@@ -386,6 +400,7 @@ export async function main() {
                 preparation: 'Gotuj makaron, dodaj warzywa i posyp startym serem.',
                 ingredients: ['Makaron', 'Warzywa (np. cukinia, pomidory)', 'Ser'],
                 type: MealType.DINNER,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675289/meal16_bkd13i.jpg"
             },
             {
                 title: 'Sałatka z Tuńczykiem',
@@ -397,9 +412,49 @@ export async function main() {
                 preparation: 'Wymieszaj składniki sałatki i dopraw.',
                 ingredients: ['Tuńczyk', 'Jajka', 'Oliwki', 'Sałata', 'Sos winegret'],
                 type: MealType.DINNER,
+                imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675295/meal17_fwreq3.jpg"
             },
         ],
     });
+
+    await prisma.post.createMany({
+        data: [{
+            id: 1,
+            title: "Pożywne Śniadanie z Owsianką i Owocami",
+            content: "Rozpocznij dzień od pysznego i pożywnego śniadania! Przygotuj owsiankę z płatków owsianych, mleka migdałowego, świeżych jagód, plasterków banana i łyżki miodu. Ta kombinacja dostarczy Ci energii na cały dzień i jest idealna na szybki, zdrowy początek dnia.",
+            authorId: 1,
+            dataPublikacji: "2024-08-01T00:00:00.000Z",
+            imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675302/post1_qds3je.jpg"
+        }, {
+            id: 2,
+            title: "Fit lunch na pracowity dzień",
+            content: "Szukasz zdrowego i sycącego lunchu? Wypróbuj sałatkę z grillowanym kurczakiem, świeżym awokado, pomidorami, ogórkiem i mieszanką sałat. Dodaj dressing z oliwy z oliwek, soku z cytryny i przypraw do smaku. Ta sałatka jest pełna białka i zdrowych tłuszczy, które utrzymają Cię pełnym energii przez cały dzień.",
+            authorId: 2,
+            dataPublikacji: "2024-07-26T00:00:00.000Z",
+            imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675309/post2_tnii25.jpg"
+        }, {
+            id: 3,
+            title: "Pyszna kolacja dla całej rodziny",
+            content: "Przygotuj zdrową kolację z pieczonym łososiem i sezonowymi warzywami. Wystarczy, że natrzesz filety łososia oliwą z oliwek, czosnkiem, cytryną i ziołami, a następnie upieczesz je razem z brokułami, marchewką i papryką. To danie jest nie tylko smaczne, ale także bogate w kwasy omega-3 i witaminy.",
+            authorId: 3,
+            dataPublikacji: "2024-07-15T00:00:00.000Z",
+            imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675314/post3_hokqos.jpg"
+        }, {
+            id: 4,
+            title: "Zdrowa przekąska na każdą porę dnia",
+            content: "Jeśli szukasz zdrowej przekąski, wypróbuj jogurt grecki z dodatkiem orzechów i miodu. Wymieszaj jogurt z garścią posiekanych orzechów włoskich lub migdałów i polej miodem. Ta przekąska jest bogata w białko i zdrowe tłuszcze, a także idealnie zaspokaja głód między posiłkami.",
+            authorId: 1,
+            dataPublikacji: "2024-06-19T00:00:00.000Z",
+            imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675319/post4_fzk437.jpg"
+        }, {
+            id: 5,
+            title: "Pomysł na szybki i zdrowy deser",
+            content: "Na szybki i zdrowy deser przygotuj pudding chia. Wymieszaj nasiona chia z mlekiem kokosowym i odstaw do lodówki na kilka godzin, aby nasiona napęczniały. Przed podaniem dodaj świeże kawałki mango i odrobinę mięty. To pyszny i orzeźwiający deser, który dostarczy Ci błonnika i witamin.",
+            authorId: 2,
+            dataPublikacji: "2024-08-02T00:00:00.000Z",
+            imageUrl: "https://res.cloudinary.com/dszzihxcj/image/upload/v1722675327/post5_lupqjw.jpg"
+        }]
+    })
 
     console.log('Sample data has been added to the database.');
 }
