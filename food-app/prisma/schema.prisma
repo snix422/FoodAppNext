@@ -9,11 +9,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Author {
+  id    Int    @id @default(autoincrement())
+  name  String
+  posts Post[]
+}
+
 model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  author    String
+  id             Int      @id @default(autoincrement())
+  title          String
+  content        String
+  dataPublikacji DateTime @default(now())
+  authorId       Int
+  author         Author   @relation(fields: [authorId], references: [id])
 }
 
 model Kontakt {
@@ -33,6 +41,7 @@ model Offer {
   id Int @id @default(autoincrement())
   title String
   description String
+  price Int
 }
 
 model User {
@@ -57,3 +66,28 @@ model VerificationToken {
   token      String   @unique
   expires    DateTime
 }
+
+model Meal {
+  id             Int      @id @default(autoincrement())
+  title          String
+  description    String
+  kcal           Int
+  carbohydrates  Float
+  protein        Float
+  fat            Float
+  preparation    String
+  ingredients    String[]
+  type           MealType
+  imageUrl       String?
+}
+
+enum MealType {
+  BREAKFAST
+  SECOND_BREAKFAST
+  LUNCH
+  DINNER
+}
+
+ 
+
+

@@ -5,6 +5,9 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import { SessionProvider } from "next-auth/react";
 import SessionProviderWrapper from "@/components/header/SessionProviderWrapper/SessionProviderWrapper";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
+import ReduxProvider from "@/components/Providers/ReduxProvider";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
+       <ReduxProvider>
         <SessionProviderWrapper>
         <Header />
         {children}
         </SessionProviderWrapper>
+        </ReduxProvider>
         </body>
     </html>
   );
