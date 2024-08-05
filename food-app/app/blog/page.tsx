@@ -1,3 +1,5 @@
+import HeadingTitle from "@/components/Blog/HeadingTitle";
+import PostsList from "@/components/Blog/PostsList";
 import Link from "next/link";
 
 const getPosts = async () => {
@@ -11,21 +13,9 @@ const getPosts = async () => {
 const Blog = async () => {
     const posts : {id:number, title:string, content:string, author:string}[] = await getPosts();
     return (
-        <main>
-            <h1>Blog</h1>
-            <section>
-                {posts.map((post:any)=>{
-                    return(
-                        <div key={post.id}>
-                            <h3>{post.title}</h3>
-                            <h4>{post.author}</h4>
-                            <Link href={`/blog/${post.id}`}>
-                                <button>Zobacz</button>
-                            </Link>
-                        </div>
-                    )
-                })}
-            </section>
+        <main className="pt-12">
+            <HeadingTitle title="Blog" className="text-4xl" />
+            <PostsList posts={posts}/>
         </main>
     )
 }

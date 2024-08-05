@@ -13,7 +13,7 @@ const LatestPosts = async () => {
     const latestPosts = await getLatestPosts();
     return(
         <section>
-            <HeadingTitle title="Ostatnie wpisy" />
+            <HeadingTitle title="Ostatnie wpisy" className="text-4xl" />
             <PostsList posts={latestPosts} />
         </section>
     )

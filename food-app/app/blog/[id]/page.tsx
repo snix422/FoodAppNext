@@ -1,3 +1,5 @@
+import HeadingTitle from "@/components/Blog/HeadingTitle";
+import Image from "next/image";
 
 
 const getPostById = async (id: number) => {
@@ -23,9 +25,16 @@ const BlogPage = async ({params} :PageProps) => {
    
     const id = Number(params.id);
     const currentPost = await getPostById(Number(id));
+    console.log(currentPost)
     return(
-        <main>
-            <h1>{currentPost.title}</h1>
+        <main className="flex flex-col items-center pt-12">
+            <HeadingTitle title={currentPost.title} className="text-4xl" />
+            <Image src={currentPost.imageUrl} alt={currentPost.title} width={500} height={500} />
+            <p className="w-3/5 pt-12 text-2xl">{currentPost.content}</p>
+            <div className="w-[60vw] flex justify-between pt-12">
+            <span className="font-bold">Data stworzenia: {currentPost.dataPublikacji?.slice(0,10)}</span>
+            <span className="font-bold">Autor: {currentPost.author?.name}</span>
+            </div>
         </main>
     )
 }

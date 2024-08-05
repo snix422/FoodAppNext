@@ -1,5 +1,10 @@
-const HeadingTitle = ({title}:{title:string}) => {
-    return <h1 className="text-center mb-12 text-2xl">{title}</h1>
+interface HeadingTitleProps {
+    title:string,
+    className?:string
+}
+
+const HeadingTitle :React.FC<HeadingTitleProps> = ({title,className}) => {
+    return <h1 className={`text-center mb-12 ${className}`}>{title}</h1>
 }
 
 export default HeadingTitle
