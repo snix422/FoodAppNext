@@ -1,6 +1,7 @@
 "use client"
 
 import { sendRecipe } from "@/lib/actions";
+import { useState } from "react";
 import { useFormState } from 'react-dom';
 
 interface RecipeFormData {
@@ -9,8 +10,26 @@ interface RecipeFormData {
     author: string;
 }
 
-const AddRecipe = async () => {
+const AddRecipe = () => {
     //const [state, formAction] = useFormState(sendRecipe, {message:""});
+    const [ingredients, setIngredients] = useState<any>([{ name: "", quantity: "" }]);
+
+    const handleInputChange = (index:any, event:any
+    ) => {
+        const values = [...ingredients];
+        values[index][event.target.name] = event.target.value;
+        setIngredients(values);
+    };
+
+    const handleAddIngredient = () => {
+        setIngredients([...ingredients, { name: "", quantity: "" }]);
+    };
+
+    const handleRemoveIngredient = (index:any) => {
+        const values = [...ingredients];
+        values.splice(index, 1);
+        setIngredients(values);
+    };
     return(
         <main>
             <h1>Add a New Recipe</h1>
@@ -41,6 +60,35 @@ const AddRecipe = async () => {
                         required
                     />
                 </div>
+
+                <div>
+                    <label>Ingredients</label>
+                    {ingredients.map((ingredient:any, index:number) => (
+                        <div key={index}>
+                            <input
+                                type="text"
+                                name="name"
+                                value={ingredient.name}
+                                placeholder="Ingredient Name"
+                                onChange={event => handleInputChange(index, event)}
+                                required
+                            />
+                            <input
+                                type="text"
+                                name="quantity"
+                                value={ingredient.quantity}
+                                placeholder="Quantity"
+                                onChange={event => handleInputChange(index, event)}
+                                required
+                            />
+                            <button type="button" onClick={() => handleRemoveIngredient(index)}>Remove</button>
+                        </div>
+                    ))}
+                    <button type="button" onClick={handleAddIngredient}>Add Ingredient</button>
+                </div>
+
+
+
                 <button type="submit">Add Recipe</button>
                 
             </form>

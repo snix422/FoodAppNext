@@ -3,6 +3,7 @@
 import { MealTypeTranslation } from "@/types/types"
 import { MealType } from "@prisma/client";
 import Image from "next/image";
+import ButtonDetails from "./ButtonDetails";
 
 const MealItem = ({data}:{data:any}) => {
     const mealType: MealType = data.type;
@@ -12,7 +13,7 @@ const MealItem = ({data}:{data:any}) => {
             <div className="w-full h-[80%] relative rounded">
                 <Image
                     className="rounded"
-                    src={data.imageUrl}
+                    src={data?.imageUrl}
                     alt={data.title}
                     layout="fill"
                     objectFit="cover"
@@ -20,6 +21,7 @@ const MealItem = ({data}:{data:any}) => {
             </div>
             <h2 className="text-lg font-bold">{data.title}</h2>
             <p>{MealTypeTranslation[mealType]}</p>
+            <ButtonDetails title={data.id} />
         </div>
     )
 }

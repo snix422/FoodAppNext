@@ -29,7 +29,15 @@ const BlogPage = async ({params} :PageProps) => {
     return(
         <main className="flex flex-col items-center pt-12">
             <HeadingTitle title={currentPost.title} className="text-4xl" />
-            <Image src={currentPost.imageUrl} alt={currentPost.title} width={500} height={500} />
+            <div className="w-[40vw] h-[40vh] relative rounded">
+                <Image
+                    className="rounded"
+                    src={currentPost.imageUrl}
+                    alt={currentPost.title}
+                    layout="fill"
+                    objectFit="cover"
+                />
+            </div>
             <p className="w-3/5 pt-12 text-2xl">{currentPost.content}</p>
             <div className="w-[60vw] flex justify-between pt-12">
             <span className="font-bold">Data stworzenia: {currentPost.dataPublikacji?.slice(0,10)}</span>
