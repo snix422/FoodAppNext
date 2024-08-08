@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 
-export async function sendRecipe(state:void,formData: FormData) :Promise<void> {
+/*export async function sendRecipe(state:void,formData: FormData) :Promise<void> {
     'use server';
     const title = formData.get('title')?.toString();
     const content = formData.get('content')?.toString();
@@ -20,4 +20,4 @@ export async function sendRecipe(state:void,formData: FormData) :Promise<void> {
         console.error('Error adding recipe:', error);
         throw new Error('Internal Server Error');
     }
-}
+}*/

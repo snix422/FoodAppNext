@@ -36,7 +36,7 @@ export async function sendPost(prevState: FormState,formData:any): Promise<any>{
     const title = formData.get("title") as string;
     const content = formData.get("content");
     const author = formData.get("author");
-    const img = formData.get("image");
+    const img = formData.get("image") as File | null;
     let imageUrl = "";
     console.log(img);
 
@@ -56,12 +56,27 @@ export async function sendPost(prevState: FormState,formData:any): Promise<any>{
 
     if (img) {
         try {
-          imageUrl = await uploadImageToCloudinary(img);
+            const formData = new FormData();
+            formData.append('file', img);
+
+            const response = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                console.log(response);
+                throw new Error('Failed to upload image');
+            }
+            console.log('po fetchu');
+            const data = await response.json();
+            imageUrl = data.imageUrl;
+            console.log('Image URL:', imageUrl);
         } catch (error) {
-          console.error('Error uploading image to Cloudinary:', error);
-          return { title: titleError, content: contentError, author: authorError };
+            console.error('Error uploading image to server:', error);
+            return { title: titleError, content: contentError, author: authorError };
         }
-      }
+    }
 
       try {
         await savePostToDatabase(title, content, author, imageUrl);

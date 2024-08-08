@@ -34,3 +34,14 @@ export interface MealsStateRedux {
     searchTerm: string;
     mealType: MealType | '';
   }
+
+  export interface LoginForm {
+    email:string
+    password: string,
+  }
+
+  export interface RegisterForm {
+    email:string,
+    password:string,
+    confirmPassword:string
+  }

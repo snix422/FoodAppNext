@@ -13,7 +13,7 @@ const OffersContainer = async () => {
     const offers = await getOffers();
     console.log(offers,'home')
     return(
-        <section>
+        <section className="flex flex-col gap-8 mt-12">
             <HeadingOfferTitle title="Nasza oferta" />
             <OffersList offers={offers}/>
         </section>

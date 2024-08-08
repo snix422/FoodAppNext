@@ -1,3 +1,6 @@
+
+"use server"
+
 import cloudinary from '@/cloudinary/cloudinary';
 import { PrismaClient } from '@prisma/client';
 import FormData from 'form-data';
@@ -16,6 +19,7 @@ export async function savePostToDatabase(title: string, content: string, authorN
 
     // Jeśli autor nie istnieje, stwórz nowego autora
     if (!author) {
+        console.log('Creating new author:', authorName);
         author = await prisma.author.create({
             data: {
                 name: authorName
@@ -45,34 +49,22 @@ export async function savePostToDatabase(title: string, content: string, authorN
 interface CloudinaryResponse {
     secure_url: string;
   }
-
-export async function uploadImageToCloudinary(filePath: string): Promise<string> {
+  export async function uploadImageToCloudinary(buffer: Buffer, fileName: string): Promise<string> {
     const form = new FormData();
-    
-    // Read the file as a buffer
-    const fileBuffer = await fsPromises.readFile(filePath);
-    
-    // Extract the file name from the path
-    const fileName = path.basename(filePath);
-  
-    // Append the file to the form-data object
-    form.append('file', fileBuffer, { filename: fileName });
+    form.append('file', buffer, { filename: fileName });
     form.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET || '');
-  
-    // Make a POST request to Cloudinary
-    const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`, {
-      method: 'POST',
-      body: form,
-      headers: form.getHeaders(), // Use getHeaders() to set the correct headers for form-data
-    });
-  
-    // Check if the request was successful
-    if (!response.ok) {
-      throw new Error(`Cloudinary upload failed: ${response.statusText}`);
-    }
-  
-    // Parse the response and return the image URL
-    const result: CloudinaryResponse = await response.json() as CloudinaryResponse;
 
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`, {
+        method: 'POST',
+        body: form,
+        headers: form.getHeaders(), // użyj getHeaders() z form-data
+    });
+
+    if (!response.ok) {
+        throw new Error(`Cloudinary upload failed: ${response.statusText}`);
+    }
+
+    const result: CloudinaryResponse = await response.json() as CloudinaryResponse;
+    console.log('Upload successful, URL:', result.secure_url);
     return result.secure_url;
-  }
+}

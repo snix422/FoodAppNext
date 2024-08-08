@@ -36,16 +36,16 @@ export default function SignUp(){
       };
 
     return(
-        <>
-            <h1 className="text-center mt-8 text-4xl mb-8">Rejestracja</h1>
-            <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4">
-                <input className="w-1/5 text-center" type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="E-mail" />
-                <input className="w-1/5 text-center" type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" />
-                <input className="w-1/5 text-center" type="password" name="confirmPassword" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Potwierdź hasło" />
+        <main className="w-[100vw] h-[80vh] flex flex-col justify-center items-center">
+            <h1 className="text-center mt-8 text-4xl mb-12">Rejestracja</h1>
+            <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-12">
+                <input className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="E-mail" />
+                <input className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" />
+                <input className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" type="password" name="confirmPassword" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Potwierdź hasło" />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button className="w-1/5 mb-4 text-xl" type="submit">Zarejestruj się</button>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Zarejestruj się</button>
             </form>
-        </>
+        </main>
     )
 
 }

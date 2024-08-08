@@ -1,8 +1,16 @@
 "use client";
 
+import { authenticateUser } from "@/lib/auth";
+import { LoginForm } from "@/types/types";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+export interface FormData {
+  email: string;
+  password: string;
+}
 
 export default function SignIn() {
     const [email, setEmail] = useState("");
@@ -10,7 +18,22 @@ export default function SignIn() {
     const [error, setError] = useState("");
     const router = useRouter();
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const {register,handleSubmit, formState:{errors},reset} = useForm<FormData>();
+
+    const onSubmit:SubmitHandler<FormData> = async (data) => {
+      console.log(data)
+      const result = await authenticateUser(data.email, data.password);
+      if (result.error) {
+        setError(result.error);
+      } else {
+        router.push('/');
+      }
+      if(data.email && data.password){
+        reset();
+      }
+    }
+
+    /*const loginUser = async (e: React.FormEvent) => {
         e.preventDefault();
     
         const result = await signIn('credentials', {
@@ -24,29 +47,27 @@ export default function SignIn() {
         } else {
           router.push('/');
         }
-      };
+      };*/
 
     return (
-        <>
-            <h1>Logowanie</h1>
-            <form onSubmit={handleSubmit}>
+        <main className="w-[100vw] h-[80vh] flex flex-col justify-center items-center">
+            <h1 className="text-center mt-8 text-4xl mb-12">Logowanie</h1>
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col items-center gap-12">
                 <input
                     type="text"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    {...register("email")}
                     placeholder="Wpisz E-mail..."
+                    className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 <input
                     type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    {...register("password")}
                     placeholder="Wpisz hasło..."
+                    className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit">Zaloguj się</button>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Zaloguj się</button>
             </form>
-        </>
+        </main>
     );
 }

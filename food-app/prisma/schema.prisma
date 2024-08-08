@@ -11,14 +11,14 @@ datasource db {
 
 model Author {
   id    Int    @id @default(autoincrement())
-  name  String
+  name  String @unique
   posts Post[]
 }
 
 model Post {
   id             Int      @id @default(autoincrement())
-  title          String
-  content        String
+  title          String   @unique
+  content        String   
   dataPublikacji DateTime @default(now())
   authorId       Int
   author         Author   @relation(fields: [authorId], references: [id])

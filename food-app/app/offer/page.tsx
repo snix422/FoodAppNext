@@ -1,3 +1,4 @@
+import HeadingOfferTitle from "@/components/Offers/HeadingOfferTitle";
 import OfferListPage from "@/components/Offers/OfferListPage";
 import OffersList from "@/components/Offers/OffersList"
 import { OfferType } from "@/types/types";
@@ -24,8 +25,8 @@ const Offer = async () => {
     const offers : OfferType[] = await getOffers();
     console.log(offers);
     return(
-        <main>
-            <h1>Nasza Oferta</h1>
+        <main className="w-[100vw] flex flex-col items-center gap-8 pt-12 pb-12">
+            <HeadingOfferTitle title="Nasza oferta"/>
             <OfferListPage offers={offers}/>
         </main>
     )
