@@ -1,3 +1,4 @@
+import { RegisterForm } from "@/types/types";
 import { signIn } from "next-auth/react";
 
 export interface SignInResult {
@@ -31,3 +32,24 @@ export interface SignInResult {
       return { error: "Wystąpił błąd podczas logowania" };
     }
   };
+
+  export const registerUser = async (email: string, password: string) => {
+    try {
+        const res = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (res.ok) {
+            return { success: true };
+        } else {
+            const resData = await res.json();
+            return { error: resData.error || 'Wystąpił błąd podczas rejestracji' };
+        }
+    } catch (err) {
+        return { error: 'Wystąpił błąd podczas rejestracji' };
+    }
+};

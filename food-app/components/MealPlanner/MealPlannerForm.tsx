@@ -40,9 +40,9 @@ const MealPlannerForm = ({meals}:{meals:any}) => {
             </select>
           </label>
         </div>
+        
       ))}
     </div>
-    )
-}
+    )}
 
 export default MealPlannerForm

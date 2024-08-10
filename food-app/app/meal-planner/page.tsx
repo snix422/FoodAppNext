@@ -1,6 +1,7 @@
 
 
 import MealPlannerForm from "@/components/MealPlanner/MealPlannerForm";
+import MealPlannerSelectList from "@/components/MealPlanner/MealPlannerSelectList";
 import { setMeals } from "@/redux/slices/mealSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -32,6 +33,7 @@ const mealPlannerPage = async () => {
     return(
         <main>
             <MealPlannerForm meals={meals} />
+            <MealPlannerSelectList meals={meals} />
         </main>
     )
 }

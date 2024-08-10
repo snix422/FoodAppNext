@@ -20,17 +20,32 @@ export default function SignIn() {
 
     const {register,handleSubmit, formState:{errors},reset} = useForm<FormData>();
 
-    const onSubmit:SubmitHandler<FormData> = async (data) => {
+    const validationRegister = {
+      email:{
+        required: "E-mail jest wymagany",
+        minLength:{
+          value:5,
+          message: "E-mail musi posiadać min. 5 znaków"
+        }
+      },
+      password:{
+        required: "Hasło jest wymagane",
+        minLength:{
+          value:6,
+          message: "Hasło musi posiadać min. 6 znaków"
+        }
+      }
+    }
+
+    const onSubmit:SubmitHandler<FormData> = async (data:LoginForm) => {
       console.log(data)
       const result = await authenticateUser(data.email, data.password);
       if (result.error) {
         setError(result.error);
       } else {
-        router.push('/');
-      }
-      if(data.email && data.password){
         reset();
-      }
+        router.push('/');
+      }      
     }
 
     /*const loginUser = async (e: React.FormEvent) => {
@@ -55,18 +70,20 @@ export default function SignIn() {
             <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col items-center gap-12">
                 <input
                     type="text"
-                    {...register("email")}
+                    {...register("email", validationRegister.email)}
                     placeholder="Wpisz E-mail..."
                     className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
+                {errors.email?.message ? <span>{errors.email.message}</span> : null}
                 <input
                     type="password"
-                    {...register("password")}
+                    {...register("password",validationRegister.password)}
                     placeholder="Wpisz hasło..."
                     className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {errors.password?.message ? <span>{errors.password.message}</span> : null}
                 <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Zaloguj się</button>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>
         </main>
     );
