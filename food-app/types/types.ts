@@ -45,3 +45,8 @@ export interface MealsStateRedux {
     password:string,
     confirmPassword:string
   }
+
+  export interface MealAssignment {
+    mealId:   number
+    mealType:  MealType
+  }  

@@ -14,7 +14,7 @@ interface MealSelection {
   }
   
   interface MealPlannerState {
-    selectedMeals: MealSelection[];
+    selectedMeals: any[];
     meals: any[];
   }
   
@@ -30,16 +30,31 @@ const mealPlannerSlice = createSlice({
         setMeals(state, action: PayloadAction<any[]>) {
             state.meals = action.payload;
         },
-        setSelectedMeal(state,action:PayloadAction<MealSelection>){
-            const {mealType, mealId} = action.payload;
-            const existingSelection = state.selectedMeals.find((selection)=>
-                selection.mealType === mealType
+        setSelectedMeal(state,action:PayloadAction<any>){
+            //const {mealType, mealId} = action.payload;
+            /*const existingSelection = state.selectedMeals.find((selection)=>
+                selection.type === action.payload.type
             )
             if(existingSelection){
-                existingSelection.mealId = mealId
+               
+                //existingSelection.id = action.payload.id;
+                state.selectedMeals.filter(m => m.id !== existingSelection.id);
+                state.selectedMeals.push(action.payload);
             }else{
                 state.selectedMeals.push(action.payload)
-            }
+            }*/
+                const newMeal = action.payload;
+
+                // Znajdź indeks istniejącego posiłku z tym samym typem posiłku
+                const existingIndex = state.selectedMeals.findIndex((meal) => meal.type === newMeal.type);
+          
+                if (existingIndex !== -1) {
+                  // Jeśli istnieje taki posiłek, usuń go
+                  state.selectedMeals.splice(existingIndex, 1);
+                }
+          
+                // Dodaj nowy posiłek
+                state.selectedMeals.push(newMeal);
         },
         clearSelectedMeals(state){
             state.selectedMeals = []

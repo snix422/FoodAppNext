@@ -52,6 +52,7 @@ model User {
   role      String   
   createdAt DateTime @default(now())
   sessions  Session[]
+  userMeals UserMeal[]
 }
 
 model Session {
@@ -88,6 +89,18 @@ enum MealType {
   LUNCH
   DINNER
 }
+
+model UserMeal {
+  id         Int        @id @default(autoincrement())
+  userId     Int
+  meals      Json // Stores meal IDs with their types as a list of objects
+
+  user       User       @relation(fields: [userId], references: [id])
+
+  @@unique([userId]) // Each user has one record for all meal selections
+}
+
+
 
  
 

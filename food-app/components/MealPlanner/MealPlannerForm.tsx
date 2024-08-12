@@ -22,6 +22,8 @@ const MealPlannerForm = ({meals}:{meals:any}) => {
       
     return(
     <div>
+      <span>Selected</span>
+      {selectedMeals.map((m)=><h2>{m.title}</h2>)}
       <h2>Wybierz posiłki na każdy posiłek dnia</h2>
       {Object.values(MealType).map((mealType) => (
         <div key={mealType}>
@@ -39,8 +41,8 @@ const MealPlannerForm = ({meals}:{meals:any}) => {
               ))}
             </select>
           </label>
+          
         </div>
-        
       ))}
     </div>
     )}

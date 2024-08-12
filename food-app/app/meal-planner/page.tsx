@@ -3,8 +3,9 @@
 import MealPlannerForm from "@/components/MealPlanner/MealPlannerForm";
 import MealPlannerSelectList from "@/components/MealPlanner/MealPlannerSelectList";
 import { setMeals } from "@/redux/slices/mealSlice";
+import { RootState } from "@/redux/store";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const getMeals = async () => {
     const res = await fetch("http://localhost:3000/api/getMeals");
@@ -30,10 +31,12 @@ const mealPlannerPage = async () => {
     loadMeals();
   }, []);*/
   const meals = await getMeals();
+ 
     return(
         <main>
             <MealPlannerForm meals={meals} />
             <MealPlannerSelectList meals={meals} />
+           
         </main>
     )
 }

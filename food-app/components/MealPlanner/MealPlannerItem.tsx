@@ -11,13 +11,13 @@ const MealPlannerItem = ({data}:{data:any}) => {
     const dispatch = useDispatch();
     const selectedItems = useSelector((state:RootState)=>state.mealPlanner.selectedMeals);
     const isSelected = selectedItems.some((s)=>s.mealId === data.id);
-    console.log(isSelected)
+   
     const toggle = () => {
         setIsOpen(prevState => !prevState);
     }
 
     const handleSelect = () => {
-        dispatch(setSelectedMeal({ mealType: data.type, mealId: data.id }));
+        dispatch(setSelectedMeal(data));
     }
     
     console.log(data);
