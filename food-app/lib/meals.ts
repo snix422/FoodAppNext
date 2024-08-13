@@ -1,5 +1,6 @@
 import prisma from "@/prisma/client";
 import { savePostToDatabase, uploadImageToCloudinary } from "./posts";
+import { Meal } from "@/types/types";
 
 type FormData = {
     title: string;
@@ -87,3 +88,28 @@ export async function sendPost(prevState: FormState,formData:any): Promise<any>{
 
     return {title:titleError,content:contentError,author:authorError};
 }
+
+
+interface SaveMealsParams {
+    userId: string;
+    meals: Meal[];
+  }
+  
+  export async function saveMeals({ userId, meals }: SaveMealsParams): Promise<void> {
+    const response = await fetch('/api/saveMeals', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId,
+        meals,
+      }),
+    });
+  
+    if (!response.ok) {
+      throw new Error('Failed to save meals');
+    }
+  
+    return response.json();
+  }
