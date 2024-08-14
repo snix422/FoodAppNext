@@ -96,7 +96,7 @@ interface SaveMealsParams {
   }
   
   export async function saveMeals({ userId, meals }: SaveMealsParams): Promise<void> {
-    const response = await fetch('/api/saveMeals', {
+    const response = await fetch('/api/sendRecipe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -108,7 +108,8 @@ interface SaveMealsParams {
     });
   
     if (!response.ok) {
-      throw new Error('Failed to save meals');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to save meals');
     }
   
     return response.json();

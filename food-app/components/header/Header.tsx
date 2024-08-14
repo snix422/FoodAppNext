@@ -1,5 +1,6 @@
 "use client"
 
+import { handleLogout } from "@/lib/auth";
 import {useSession } from "next-auth/react"
 import Link from "next/link"
 
@@ -30,6 +31,7 @@ const Header = () => {
                     {userRole ? <>
                         <li><Link className="text-xl" href={"/meal-planner"}>Stwórz dietę dla siebie</Link></li>
                         <li><Link className="text-xl" href={"/add-recipe"}>Dodaj przepis</Link></li>
+                        <li><Link className="text-xl" href={"/your-individual-diet"}>Twoje diety</Link></li>
                     </> : null }
                     <li><Link className="text-xl" href={"/blog"}>Blog</Link></li>
                     <li><Link className="text-xl" href={"/contact"}>Kontakt</Link></li>
@@ -37,7 +39,7 @@ const Header = () => {
                     {!isAuthenticated ? <>
                         <li><Link className="text-xl" href={"/auth/signIn"}>Logowanie</Link></li>
                         <li><Link className="text-xl" href={"/auth/signUp"}>Rejestracja</Link></li>
-                    </> : null}
+                    </> : <li><button onClick={handleLogout}>Wyloguj się</button></li>}
                 </ul>
             </nav>
         </header>

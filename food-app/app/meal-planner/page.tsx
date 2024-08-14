@@ -2,6 +2,7 @@
 
 import MealPlannerForm from "@/components/MealPlanner/MealPlannerForm";
 import MealPlannerSelectList from "@/components/MealPlanner/MealPlannerSelectList";
+import MealPlannerSubmitButton from "@/components/MealPlanner/MealPlannerSubmitButton";
 import { setMeals } from "@/redux/slices/mealSlice";
 import { RootState } from "@/redux/store";
 import { useEffect } from "react";
@@ -36,6 +37,7 @@ const mealPlannerPage = async () => {
         <main>
             <MealPlannerForm meals={meals} />
             <MealPlannerSelectList meals={meals} />
+            <MealPlannerSubmitButton />
            
         </main>
     )

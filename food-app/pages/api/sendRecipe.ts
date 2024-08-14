@@ -25,6 +25,8 @@ export default async function saveMeals(req: NextApiRequest, res: NextApiRespons
   if (req.method === 'POST') {
     try {
       const { userId, meals }: RequestBody = req.body;
+      console.log(userId);
+      console.log(meals);
 
       // Walidacja danych
       if (!userId || !meals || !Array.isArray(meals)) {
@@ -33,10 +35,10 @@ export default async function saveMeals(req: NextApiRequest, res: NextApiRespons
 
       // Zapis do bazy danych
       await prisma.userMeal.upsert({
-        where: { userId: parseInt(userId) },
+        where: { userId: parseInt(userId,10) },
         update: { meals: JSON.stringify(meals) }, // Przechowuje pełne dane posiłków jako JSON
         create: {
-          userId: parseInt(userId),
+          userId: parseInt(userId,10),
           meals: JSON.stringify(meals), // Przechowuje pełne dane posiłków jako JSON
         },
       });

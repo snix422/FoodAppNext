@@ -10,7 +10,7 @@ const MealPlannerItem = ({data}:{data:any}) => {
     const [isOpen,setIsOpen] = useState(false);
     const dispatch = useDispatch();
     const selectedItems = useSelector((state:RootState)=>state.mealPlanner.selectedMeals);
-    const isSelected = selectedItems.some((s)=>s.mealId === data.id);
+    const isSelected = selectedItems.some((s)=>s.id=== data.id);
    
     const toggle = () => {
         setIsOpen(prevState => !prevState);

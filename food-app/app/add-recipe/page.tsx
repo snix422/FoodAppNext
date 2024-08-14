@@ -1,6 +1,5 @@
 "use client"
 
-import { sendRecipe } from "@/lib/actions";
 import { useState } from "react";
 import { useFormState } from 'react-dom';
 

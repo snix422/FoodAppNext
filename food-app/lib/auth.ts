@@ -1,5 +1,5 @@
 import { RegisterForm } from "@/types/types";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 
 export interface SignInResult {
     error?: string;
@@ -53,3 +53,9 @@ export interface SignInResult {
         return { error: 'Wystąpił błąd podczas rejestracji' };
     }
 };
+
+export const handleLogout = async () => {
+  await signOut({ 
+    redirect: true, // Przekierowuje użytkownika po wylogowaniu
+    callbackUrl: '/' // Strona, na którą użytkownik zostanie przekierowany po wylogowaniu
+  })}
