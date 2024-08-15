@@ -16,30 +16,41 @@ interface MealData {
   type: MealType;
 }
 
-interface RequestBody {
+/*interface RequestBody {
   userId: string;
   meals: MealData[];
+}*/
+
+interface RequestBody {
+  userId: string;
+  meals: {
+    sniadanieId?: number;
+    drugieSniadanieId?: number;
+    obiadId?: number;
+    kolacjeId?: number;
+  };
 }
 
 export default async function saveMeals(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
       const { userId, meals }: RequestBody = req.body;
-      console.log(userId);
-      console.log(meals);
 
       // Walidacja danych
-      if (!userId || !meals || !Array.isArray(meals)) {
+      if (!userId || !meals) {
         return res.status(400).json({ message: 'Invalid data' });
       }
 
-      // Zapis do bazy danych
-      await prisma.userMeal.upsert({
-        where: { userId: parseInt(userId,10) },
-        update: { meals: JSON.stringify(meals) }, // Przechowuje pełne dane posiłków jako JSON
-        create: {
-          userId: parseInt(userId,10),
-          meals: JSON.stringify(meals), // Przechowuje pełne dane posiłków jako JSON
+      const userIdInt = parseInt(userId, 10);
+
+      // Tworzenie nowego rekordu
+      await prisma.userDiet.create({
+        data: {
+          userId: userIdInt,
+          sniadanieId: meals.sniadanieId || null,
+          drugieSniadanieId: meals.drugieSniadanieId || null,
+          obiadId: meals.obiadId || null,
+          kolacjeId: meals.kolacjeId || null,
         },
       });
 

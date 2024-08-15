@@ -52,7 +52,8 @@ model User {
   role      String   
   createdAt DateTime @default(now())
   sessions  Session[]
-  userMeals UserMeal[]
+  userMeals userDiet[] @relation("UserToUserDiet")
+  
 }
 
 model Session {
@@ -81,6 +82,30 @@ model Meal {
   ingredients    String[]
   type           MealType
   imageUrl       String?
+
+  UserDiet_sniadanie   userDiet[] @relation("MealToUserDietSniadanie")
+  UserDiet_drugieSniadanie userDiet[] @relation("MealToUserDiet2Sniadanie")
+  UserDiet_obiad       userDiet[] @relation("MealToUserDietObiad")
+  UserDiet_kolacje     userDiet[] @relation("MealToUserDietKolacje")
+ 
+}
+
+model userDiet {
+  id                 Int     @id @default(autoincrement())
+  userId             Int
+  user               User    @relation("UserToUserDiet", fields: [userId], references: [id])
+  sniadanieId        Int?    // Klucz obcy do śniadania
+  drugieSniadanieId  Int?    // Klucz obcy do drugiego śniadania
+  obiadId            Int?    // Klucz obcy do obiadu
+  kolacjeId          Int?    // Klucz obcy do kolacji
+ 
+
+  Meal_sniadanie     Meal? @relation("MealToUserDietSniadanie", fields: [sniadanieId], references: [id])
+  Meal_drugieSniadanie Meal? @relation("MealToUserDiet2Sniadanie", fields: [drugieSniadanieId], references: [id])
+  Meal_obiad         Meal? @relation("MealToUserDietObiad", fields: [obiadId], references: [id])
+  Meal_kolacje       Meal? @relation("MealToUserDietKolacje", fields: [kolacjeId], references: [id])
+
+  // inne pola
 }
 
 enum MealType {
@@ -90,15 +115,7 @@ enum MealType {
   DINNER
 }
 
-model UserMeal {
-  id         Int        @id @default(autoincrement())
-  userId     Int
-  meals      Json // Stores meal IDs with their types as a list of objects
 
-  user       User       @relation(fields: [userId], references: [id])
-
-  @@unique([userId]) // Each user has one record for all meal selections
-}
 
 
 
