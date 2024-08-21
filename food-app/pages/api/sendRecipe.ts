@@ -21,7 +21,7 @@ interface MealData {
   meals: MealData[];
 }*/
 
-interface RequestBody {
+/*interface RequestBody {
   userId: string;
   meals: {
     sniadanieId?: number;
@@ -29,13 +29,17 @@ interface RequestBody {
     obiadId?: number;
     kolacjeId?: number;
   };
-}
+}*/
 
 export default async function saveMeals(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      const { userId, meals }: RequestBody = req.body;
-
+      const { userId, meals }: any = req.body;
+      const sniadanie = meals.find((m:any) => m.type === "BREAKFAST");
+      const secondSniadanie = meals.find((m:any)=> m.type === "SECOND_BREAKFAST");
+      const lunch = meals.find((m:any)=> m.type === "LUNCH");
+      const dinner = meals.find((m:any)=> m.type === "DINNER");
+      console.log(sniadanie);
       // Walidacja danych
       if (!userId || !meals) {
         return res.status(400).json({ message: 'Invalid data' });
@@ -47,10 +51,10 @@ export default async function saveMeals(req: NextApiRequest, res: NextApiRespons
       await prisma.userDiet.create({
         data: {
           userId: userIdInt,
-          sniadanieId: meals.sniadanieId || null,
-          drugieSniadanieId: meals.drugieSniadanieId || null,
-          obiadId: meals.obiadId || null,
-          kolacjeId: meals.kolacjeId || null,
+          sniadanieId: sniadanie.id || null,
+          drugieSniadanieId: secondSniadanie.id || null,
+          obiadId: lunch.id || null,
+          kolacjeId: dinner.id || null,
         },
       });
 

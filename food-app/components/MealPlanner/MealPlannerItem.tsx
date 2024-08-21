@@ -33,7 +33,7 @@ const MealPlannerItem = ({data}:{data:any}) => {
                 />
             </div>
             <h2 className="text-lg font-bold">{data.title}</h2>
-            <input type="checkbox" className="absolute bottom-0 form-checkbox
+            <input type="checkbox" checked={isSelected} className="absolute bottom-0 form-checkbox
             
             
             h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 custom-checkbox"

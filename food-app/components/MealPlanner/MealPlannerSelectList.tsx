@@ -10,6 +10,7 @@ const MealPlannerSelectList = ({meals}:{meals:any[]}) => {
     console.log(meals)
     const selectedItems = useSelector((state:RootState)=>state.mealPlanner.selectedMeals);
     console.log(selectedItems);
+   
 
     const groupedMeals = {
         [MealType.BREAKFAST]: meals.filter(m => m.type === MealType.BREAKFAST),

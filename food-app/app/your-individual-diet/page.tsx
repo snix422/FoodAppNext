@@ -11,6 +11,7 @@ const yourIndividualDiet =  () => {
     const [error, setError] = useState("");
 
     useEffect(() => {
+      if(!session?.user.id)return;
         const fetchDiets = async () => {
           try {
             const result = await getDiet(Number(session?.user.id));
