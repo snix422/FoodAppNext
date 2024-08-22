@@ -30,7 +30,7 @@ const yourIndividualDiet =  () => {
     console.log(session?.user.id)
     
     return(
-        <main>
+        <main className="w-[100vw] h-[90vh]">
             <DietsListUser diets={diets}/>
         </main>
     )

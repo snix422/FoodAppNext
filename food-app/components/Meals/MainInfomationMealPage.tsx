@@ -16,12 +16,12 @@ const MainInformationMealPage :React.FC<MainInformationMealPageProps> = ({data})
     <div className="w-[30vw] p-4 flex flex-col gap-2">
         <h2 className="text-xl font-bold">{data?.title}</h2>
         <span className="font-bold">Opis:</span>
-        <p className="mt-2">{data.description}</p>
+        <p className="mt-2">{data?.description}</p>
         <span className="font-bold">Sposób przygotowania:</span>
-        <span>{data.preparation}</span>
+        <span>{data?.preparation}</span>
         <div className="flex flex-col gap-2">
             <span className="font-bold">Składniki:</span>
-            {data.ingredients.map((i:any)=><p>{i}</p>)}
+            {data?.ingredients.map((i:any)=><p>{i}</p>)}
         </div>
     </div>
     <div className="mt-4 space-y-2">
