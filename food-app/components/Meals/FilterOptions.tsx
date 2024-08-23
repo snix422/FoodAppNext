@@ -17,20 +17,20 @@ const FilterOptions = () => {
         dispatch(setMealType(e.target.value as MealType))
     }
     return(
-        <div className="filters">
+        <div className="filters flex flex-col items-center gap-4">
                 <input
                     type="text"
                     placeholder="Szukaj po nazwie"
                     value={searchTerm}
                     onChange={handleSearchChange}
-                    className="filter-input"
+                    className="filter-input w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
                 />
-                <div className="type-filter">
-                    <label>Typ posiłku: </label>
+                <div className="type-filter flex flex-col items-center gap-2 ">
+                    <label className="text-lg">Typ posiłku: </label>
                     <select
                         value={mealType}
                         onChange={handleMealTypeChange}
-                        className="filter-input"
+                        className="filter-input w-full text-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-colors duration-300 appearance-none bg-white"
                     >
                         <option value="">Wszystkie</option>
                         <option value={MealType.BREAKFAST}>Śniadanie</option>

@@ -42,8 +42,10 @@ const MealPlannerSubmitButton = () => {
 
     return (
         <div>
-            <button onClick={handleSubmit} disabled={loading}>
-                {loading ? 'Saving...' : 'Dodaj posiłki'}
+            <button onClick={handleSubmit} disabled={loading} className={`w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 ${
+        loading ? 'cursor-not-allowed opacity-50' : ''
+    }`}>
+                {loading ? 'Dodawanie...' : 'Dodaj posiłki'}
             </button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>

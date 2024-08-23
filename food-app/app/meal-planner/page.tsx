@@ -3,6 +3,7 @@
 import MealPlannerForm from "@/components/MealPlanner/MealPlannerForm";
 import MealPlannerSelectList from "@/components/MealPlanner/MealPlannerSelectList";
 import MealPlannerSubmitButton from "@/components/MealPlanner/MealPlannerSubmitButton";
+import MealPlannerTitle from "@/components/MealPlanner/MealPlannerTitle";
 import { setMeals } from "@/redux/slices/mealSlice";
 import { RootState } from "@/redux/store";
 import { useEffect } from "react";
@@ -34,8 +35,8 @@ const mealPlannerPage = async () => {
   const meals = await getMeals();
  
     return(
-        <main>
-            <MealPlannerForm meals={meals} />
+        <main className="w-[100vw] flex flex-col items-center pt-12 pb-12">
+            <MealPlannerTitle title="Planer diety" />
             <MealPlannerSelectList meals={meals} />
             <MealPlannerSubmitButton />
            

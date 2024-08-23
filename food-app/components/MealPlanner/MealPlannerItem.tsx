@@ -3,6 +3,7 @@
 import { setSelectedMeal } from "@/redux/slices/mealPlannerSlice";
 import { RootState } from "@/redux/store";
 import Image from "next/image"
+import Link from "next/link";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -21,9 +22,9 @@ const MealPlannerItem = ({data}:{data:any}) => {
     }
     
     console.log(data);
-    return(
-        <div className={`w-[20vw] h-[60vh] flex flex-col items-center relative mb-12 ${isSelected ? 'border-red-200 border-2' : ''}`} onClick={handleSelect}>
-            <div className="w-full h-[60%] relative rounded">
+    return (
+        <div className={`w-full sm:w-[20vw] min-h-[40vh] flex flex-col items-center relative mb-12 p-4 rounded-lg transition-transform duration-300 ease-in-out ${isSelected ? 'scale-105 bg-red-50 border-red-500 border-4 shadow-lg' : 'scale-100 bg-white border-gray-200 border-2 shadow-sm'}`}>
+            <div className="w-full h-[60%] relative rounded overflow-hidden">
                 <Image
                     className="rounded"
                     src={data?.imageUrl}
@@ -32,22 +33,23 @@ const MealPlannerItem = ({data}:{data:any}) => {
                     objectFit="cover"
                 />
             </div>
-            <h2 className="text-lg font-bold">{data.title}</h2>
-            <input type="checkbox" checked={isSelected} className="absolute bottom-0 form-checkbox
-            
-            
-            h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 custom-checkbox"
-        />
-
-        <div className="flex">
-        <span>Kcal: {data.kcal}</span>
-        <span>Węglowodany: {data.carbohydrates}</span>
-        <span>Białko: {data.protein}</span>
-        <span>Tłuszcze: {data.fat}</span>  
-        </div>   
-        {isOpen ? <button>Pokaż Mniej</button> : <button>Pokaż więcej</button>}     
+            <h2 className="text-lg font-bold mt-2 text-center">{data.title}</h2>
+            <input
+                type="checkbox"
+                checked={isSelected}
+                className="absolute bottom-2 form-checkbox h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <Link href={`/meals/${data.id}`}>
+                <button className="underline text-lg">Pokaż szczegóły</button>
+            </Link>
+            <button
+                className="mt-4 w-full px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-transform transform hover:scale-105"
+                onClick={handleSelect}
+            >
+                Dodaj posiłek do swojej diety
+            </button>
         </div>
-    )
+    );
 }
 
 export default MealPlannerItem

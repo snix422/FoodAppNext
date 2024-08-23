@@ -28,8 +28,8 @@ const MealPlannerSelectList = ({meals}:{meals:any[]}) => {
     return(
         <>
          {Object.entries(groupedMeals).map(([mealType, mealList]) => (
-                <div key={mealType} className="flex flex-col items-center mt-8">
-                    <h3>{mealTypeLabels[mealType as unknown as MealType]}</h3>
+                <div key={mealType} className="min-h[100vh] flex flex-col items-center mt-8 gap-8">
+                    <h3 className="text-xl font-bold">{mealTypeLabels[mealType as unknown as MealType]}</h3>
                     <div className="flex justify-center gap-8 flex-wrap">
                     {mealList.length > 0 ? mealList.map((m: Meal) => (
                         <div key={m.id} className="flex">
