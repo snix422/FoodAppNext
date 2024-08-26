@@ -16,6 +16,7 @@ export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const {register,handleSubmit, formState:{errors},reset} = useForm<FormData>();
@@ -39,7 +40,9 @@ export default function SignIn() {
 
     const onSubmit:SubmitHandler<FormData> = async (data:LoginForm) => {
       console.log(data)
+      setLoading(true);
       const result = await authenticateUser(data.email, data.password);
+      setLoading(false)
       if (result.error) {
         setError(result.error);
       } else {
@@ -72,17 +75,17 @@ export default function SignIn() {
                     type="text"
                     {...register("email", validationRegister.email)}
                     placeholder="Wpisz E-mail..."
-                    className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-1/5 max-xl:w-2/5 max-sm:w-3/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 {errors.email?.message ? <span>{errors.email.message}</span> : null}
                 <input
                     type="password"
                     {...register("password",validationRegister.password)}
                     placeholder="Wpisz hasło..."
-                    className="w-1/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-1/5 max-xl:w-2/5 max-sm:w-3/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 {errors.password?.message ? <span>{errors.password.message}</span> : null}
-                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Zaloguj się</button>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">{!loading ? "Zaloguj się" : "Logowanie"}</button>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>
         </main>

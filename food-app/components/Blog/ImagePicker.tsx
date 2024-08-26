@@ -39,7 +39,7 @@ const ImagePicker:React.FC<ImagePickerProps> = ({ label, name }) => {
     }
   
     return (
-        <div className="flex flex-col items-center p-4 border rounded-lg shadow-md bg-white">
+        <div className="flex flex-col items-center p-4 border rounded-lg shadow-md bg-white mt-8">
         <label htmlFor={name} className="text-lg font-semibold mb-2">{label}</label>
         <div className="w-full flex flex-col items-center">
             <div className="w-full mb-4">

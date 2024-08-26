@@ -23,7 +23,7 @@ const MealPlannerItem = ({data}:{data:any}) => {
     
     console.log(data);
     return (
-        <div className={`w-full sm:w-[20vw] min-h-[40vh] flex flex-col items-center relative mb-12 p-4 rounded-lg transition-transform duration-300 ease-in-out ${isSelected ? 'scale-105 bg-red-50 border-red-500 border-4 shadow-lg' : 'scale-100 bg-white border-gray-200 border-2 shadow-sm'}`}>
+        <div className={`w-[25vw] max-xl:w-[40vw] max-md:w-[80vw] min-h-[50vh] flex flex-col items-center relative mb-12 p-4 rounded-lg transition-transform duration-300 ease-in-out ${isSelected ? 'scale-105 bg-red-50 border-red-500 border-4 shadow-lg' : 'scale-100 bg-white border-gray-200 border-2 shadow-sm'}`}>
             <div className="w-full h-[60%] relative rounded overflow-hidden">
                 <Image
                     className="rounded"
@@ -43,7 +43,7 @@ const MealPlannerItem = ({data}:{data:any}) => {
                 <button className="underline text-lg">Pokaż szczegóły</button>
             </Link>
             <button
-                className="mt-4 w-full px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-transform transform hover:scale-105"
+                className="h-1/10 mt-4 w-full px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-transform transform hover:scale-105"
                 onClick={handleSelect}
             >
                 Dodaj posiłek do swojej diety

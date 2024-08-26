@@ -14,7 +14,7 @@ const MealItem = ({data}:{data:any}) => {
     console.log(data);
 
     return(
-        <div className="w-1/5 h-[30vh] relative mb-12">
+        <div className="max-md:w-4/5 max-xl:w-2/5 w-1/5 h-[30vh] relative mb-12">
             <div className="w-full h-[80%] relative rounded">
                 <Image
                     className="rounded"

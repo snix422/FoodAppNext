@@ -16,8 +16,9 @@ const Header = () => {
     const userEmail = session?.user?.email;
     const userRole = session?.user?.role;
 
+
     console.log(userEmail);
-    console.log(userRole);
+    console.log(userRole,'role');
    
     return(
         <>
@@ -28,11 +29,14 @@ const Header = () => {
                 <ul className="w-100 h-100 flex justify-around">
                     <li><Link className="text-xl" href={"/offer"}>Oferta</Link></li>
                     <li><Link className="text-xl" href={"/meals"}>Przepisy</Link></li>
-                    {userRole ? <>
+                    {userRole === "user" ? <>
                         <li><Link className="text-xl" href={"/meal-planner"}>Stwórz dietę dla siebie</Link></li>
                         <li><Link className="text-xl" href={"/add-recipe"}>Dodaj przepis</Link></li>
                         <li><Link className="text-xl" href={"/your-individual-diet"}>Twoje diety</Link></li>
                     </> : null }
+                    {userRole === "admin" ? 
+                    <li><Link className="text-xl" href={"/create-post"}>Dodaj post</Link></li>    
+                    : null}
                     <li><Link className="text-xl" href={"/blog"}>Blog</Link></li>
                     <li><Link className="text-xl" href={"/contact"}>Kontakt</Link></li>
                     <li><Link className="text-xl" href={"/about"}>O nas</Link></li>
