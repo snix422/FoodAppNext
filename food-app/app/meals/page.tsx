@@ -4,6 +4,7 @@ import FilterOptions from "@/components/Meals/FilterOptions";
 import MealHeadingTitle from "@/components/Meals/MealHeadingTitle";
 import MealItem from "@/components/Meals/MealItem"
 import MealsList from "@/components/Meals/MealsList"
+import DefaultPlaceholder from "@/components/Placeholders/DefaultPlaceholder";
 import { setMeals } from "@/redux/slices/mealSlice";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useEffect, useState } from "react";
@@ -35,7 +36,7 @@ const Meals = () => {
         <main className="flex flex-col items-center gap-12 pt-12 pb-12">
             <MealHeadingTitle title="Nasze posiłki" />
             <FilterOptions />
-            {loading ? <p>Ładowanie...</p> : <MealsList meals={meals}/>}
+            {loading ? <DefaultPlaceholder lines={8} height={100} /> : <MealsList meals={meals}/>}
            
         </main>
     )
