@@ -8,7 +8,7 @@ const getOffers = async () :Promise<OfferType[]> => {
         const res = await fetch('http://localhost:3000/api/getOffers');
         if (!res.ok) {
             console.error('Fetch error:', await res.text());
-            return [];
+            throw new Error(`Wystąpił problem z pobraniem ofert ${res.status}`)
         }
 
         const data: OfferType[] = await res.json();
@@ -17,7 +17,7 @@ const getOffers = async () :Promise<OfferType[]> => {
         return data;
     } catch (error) {
         console.error('Error fetching offers:', error);
-        return [];
+        throw new Error(`Wystąpił problem z pobraniem ofert ${error}`)
     }
 }
 
@@ -25,7 +25,7 @@ const Offer = async () => {
     const offers : OfferType[] = await getOffers();
     console.log(offers);
     return(
-        <main className="w-[100vw] flex flex-col items-center gap-8 pt-12 pb-12">
+        <main className="w-[100vw] bg-pink-50 flex flex-col items-center gap-8 p-12">
             <HeadingOfferTitle title="Nasza oferta"/>
             <OfferListPage offers={offers}/>
         </main>

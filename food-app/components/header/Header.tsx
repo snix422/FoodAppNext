@@ -33,7 +33,7 @@ const Header = () => {
     return(
         <>
         
-        <header className="flex bg-purple-300 justify-around items-center py-3 relative">
+        <header className="flex max-w-[100vw] bg-purple-300 justify-around items-center py-3 relative">
             <span className="text-4xl"><Link href={"/"}>YourFood</Link></span>
             <nav className="w-3/5 h-full">
                 <ul className="w-100 h-100 flex justify-around max-lg:hidden">

@@ -7,7 +7,7 @@ const LatestPosts = React.lazy(()=>import("@/components/Blog/LatestPosts"));
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center justify-between">
        <Suspense fallback={<DefaultPlaceholder lines={3} height={200} />}>
         <LatestPosts />
        </Suspense>
@@ -15,8 +15,6 @@ export default function Home() {
         <OffersContainer />
       </Suspense>
        <AddYourMealsOffer />
-      
-       
     </main>
   );
 }

@@ -5,12 +5,12 @@ const getOfferByTitle = async (id:number) => {
         const res = await fetch(`http://localhost:3000/api/getMeal?id=${id}`);
         if(!res.ok){
             console.log(res);
-            return;
+            throw new Error("Wystąpił problem z pobieraniem posiłków")
         }
         return res.json();
     } catch (error) {
         console.error(error);
-        return;
+        throw new Error("Wystąpił problem z pobieraniem posiłków")
     }
 }
 

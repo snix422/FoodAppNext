@@ -10,19 +10,23 @@ const yourIndividualDiet =  () => {
     const { data: session, status } = useSession();
     const [diets,setDiets] = useState([]);
     const [loading,setLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [error, setError] = useState<null | string>(null);
 
     useEffect(() => {
       if(!session?.user.id)return;
+      setLoading(true)
+      setError(null)
         const fetchDiets = async () => {
-          setLoading(true)
           try {
             const result = await getDiet(Number(session?.user.id));
             setDiets(result);
             setLoading(false);
           } catch (error) {
             console.error('Error fetching diets:', error);
-            setError('Failed to load diets');
+            setError('Wystąpił problem z pobraniem twoich diet');
+            setLoading(false);
+          }
+          finally{
             setLoading(false);
           }
         };
@@ -33,6 +37,13 @@ const yourIndividualDiet =  () => {
     //const diets = await getDiet();
     console.log(diets);
     console.log(session?.user.id)
+
+    if(error){
+      <main className="w-full h-screen flex flex-col items-center justify-center">
+      <h1 className="text-3xl text-red-500">Wystąpił błąd!</h1>
+      <p className="text-lg mt-4">{error}</p>
+    </main>
+    }
     
     return(
         <main className="w-[100vw] h-[90vh]">

@@ -12,7 +12,7 @@ const getLatestPosts = async () => {
 const LatestPosts = async () => {
     const latestPosts = await getLatestPosts();
     return(
-        <section>
+        <section className="w-[100vw] bg-blue-200 pt-24">
             <HeadingTitle title="Ostatnie wpisy" className="text-4xl" />
             <PostsList posts={latestPosts} />
         </section>
