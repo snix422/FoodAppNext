@@ -16,7 +16,7 @@ const About = async () => {
     return(
         <>
         <h1>O nas</h1>
-        <p>{data?.id}</p>
+        <p>{data?.lognContent}</p>
         </>
     )
 }
