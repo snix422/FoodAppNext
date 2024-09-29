@@ -86,7 +86,7 @@ export default function SignIn() {
                 />
                 {errors.password?.message ? <span>{errors.password.message}</span> : null}
                 <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">{!loading ? "Zaloguj się" : "Logowanie"}</button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {error === "CredentialsSignin" ? <p className="text-red-700">Nieprawidłowe dane logowania</p> : <p className="text-red-700">{error}</p>}
             </form>
         </main>
     );
