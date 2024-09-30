@@ -15,6 +15,7 @@ export default function Home() {
         <OffersContainer />
       </Suspense>
        <AddYourMealsOffer />
+       
     </main>
   );
 }

@@ -46,7 +46,7 @@ const yourIndividualDiet =  () => {
     }
     
     return(
-        <main className="w-[100vw] h-[90vh]">
+        <main className="w-[100vw] min-h-[100vh] bg-red-100 py-12">
           {loading ? <DietUserPlaceholder lines={1} height={500}/> : <DietsListUser diets={diets}/>}
         </main>
     )

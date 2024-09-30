@@ -6,6 +6,7 @@ import { RegisterForm } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export default function SignUp(){
     const [email,setEmail] = useState("")
@@ -49,13 +50,26 @@ export default function SignUp(){
     }
     setLoading(true);
 
-    const result = await registerUser(data.email, data.password);
+    const loadingToast = toast.loading("Trwa rejestracja...");
+
+    try{
+      const result = await registerUser(data.email, data.password);
+   
     setLoading(false);
     if (result.error) {
+        toast.error("Rejestracja nie powiodła się ");
         setError(result.error);
     } else {
+        toast.success("Rejestracja zakończona sukcesem");
         reset();
         router.push('/auth/signIn');
+    }
+    }catch(error){
+      console.error("Błąd podczas rejestracji:", error);
+      setError("Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.");
+      toast.error("Wystąpił błąd podczas rejestracji.");
+    }finally{
+      toast.dismiss(loadingToast)
     }
     }
 
@@ -94,7 +108,7 @@ export default function SignUp(){
                 <input {...register("confirmPassword",validationRegister.confirmPassword)} className="w-1/5 max-xl:w-2/5 max-sm:w-3/5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" type="password" name="confirmPassword" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Potwierdź hasło" />
                 {errors.confirmPassword?.message ? <span>{errors.confirmPassword.message}</span>:null}
                 <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">{!loading ? "Zarejestruj się" : "Rejestrowanie ..."}</button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {error ===  "User already exists" ? <p className="text-red-600">Ten e-mail jest już używany</p> : <p className="text-red-600">{error}</p>}
             </form>
         </main>
     )

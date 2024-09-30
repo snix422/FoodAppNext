@@ -8,39 +8,56 @@ import fetch from 'node-fetch';
 import { Readable } from 'stream';
 import { promises as fsPromises } from 'fs';
 import path from 'path';
+import toast from 'react-hot-toast';
+import Error from 'next/error';
 
 const prisma = new PrismaClient();
 
 export async function savePostToDatabase(title: string, content: string, authorName: string, image:string) {
-    // Sprawdzenie czy autor istnieje
-    let author = await prisma.author.findFirst({
-        where: { name: authorName }
-    });
+    const loadingToast = toast.loading("Dodawanie posta...")
+    try {
+        // Sprawdzenie, czy autor istnieje
+        let author = await prisma.author.findFirst({
+            where: { name: authorName }
+        });
 
-    // Jeśli autor nie istnieje, stwórz nowego autora
-    if (!author) {
-        console.log('Creating new author:', authorName);
-        author = await prisma.author.create({
+        // Jeśli autor nie istnieje, stwórz nowego autora
+        if (!author) {
+            console.log('Creating new author:', authorName);
+            author = await prisma.author.create({
+                data: {
+                    name: authorName
+                }
+            });
+        }
+
+        // Dodanie posta do bazy danych
+        await prisma.post.create({
             data: {
-                name: authorName
+                title,
+                content,
+                authorId: author.id,
+                imageUrl: image
             }
         });
+
+        // Powiadomienie o sukcesie
+        toast.success("Post został pomyślnie dodany");
+        return {
+            message: "Post został pomyślnie dodany",
+            errors: {}
+        };
+    } catch (error:any) {
+        // Obsługa błędów
+        console.error("Błąd podczas dodawania posta:", error);
+        toast.error("Wystąpił błąd podczas dodawania posta. Spróbuj ponownie."); // Powiadomienie o błędzie
+        return {
+            message: "Wystąpił błąd",
+            errors: error?.message || "Nieznany błąd"
+        };
+    }finally{
+        toast.dismiss(loadingToast)
     }
-
-    // Dodanie posta do bazy danych
-    await prisma.post.create({
-        data: {
-            title,
-            content,
-            authorId: author.id,
-            imageUrl:image
-        }
-    });
-
-    return {
-        message: "Post został pomyślnie dodany",
-        errors: {}
-    };
 }
 
 

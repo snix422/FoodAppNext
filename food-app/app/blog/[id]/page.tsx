@@ -39,7 +39,7 @@ const BlogPage = async ({params} :PageProps) => {
                     objectFit="cover"
                 />
             </div>
-            <p className="w-4/5 pt-12 max-md:text-xl text-2xl">{currentPost.content}</p>
+            <p className="w-4/5 text-center pt-12 max-md:text-xl text-2xl">{currentPost.content}</p>
             <div className="w-[60vw] flex max-md:flex-col max-md:items-center justify-between pt-12">
             <span className="font-bold">Data stworzenia: {currentPost.dataPublikacji?.slice(0,10)}</span>
             <span className="font-bold">Autor: {currentPost.author?.name}</span>

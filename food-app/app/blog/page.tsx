@@ -13,7 +13,7 @@ const getPosts = async () => {
 const Blog = async () => {
     const posts : {id:number, title:string, content:string, author:string}[] = await getPosts();
     return (
-        <main className="pt-12">
+        <main className="min-h-[100vh] bg-red-100 pt-12">
             <HeadingTitle title="Blog" className="text-4xl" />
             <PostsList posts={posts}/>
         </main>

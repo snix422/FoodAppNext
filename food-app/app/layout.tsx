@@ -8,6 +8,7 @@ import SessionProviderWrapper from "@/components/header/SessionProviderWrapper/S
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import ReduxProvider from "@/components/Providers/ReduxProvider";
+import { Toaster } from "react-hot-toast";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,6 +31,7 @@ export default function RootLayout({
         <SessionProviderWrapper>
         <Header />
         {children}
+        <Toaster />
         </SessionProviderWrapper>
         </ReduxProvider>
         </body>

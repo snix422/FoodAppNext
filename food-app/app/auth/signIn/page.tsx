@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export interface FormData {
   email: string;
@@ -41,14 +42,25 @@ export default function SignIn() {
     const onSubmit:SubmitHandler<FormData> = async (data:LoginForm) => {
       console.log(data)
       setLoading(true);
-      const result = await authenticateUser(data.email, data.password);
-      setLoading(false)
+      const loadingToast = toast.loading("Logowanie...");
+      try {
+        const result = await authenticateUser(data.email, data.password);
+        setLoading(false)
       if (result.error) {
+        toast.error("Logowanie nie powiodło się ");
         setError(result.error);
       } else {
+        toast.success("Logowanie powiodło się")
         reset();
         router.push('/');
       }      
+      } catch (error) {
+        console.error("Błąd podczas logowania:", error);
+        setError("Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.");
+        toast.error("Wystąpił błąd podczas logowania.")
+      }finally{
+        toast.dismiss(loadingToast);
+      }
     }
 
     /*const loginUser = async (e: React.FormEvent) => {
