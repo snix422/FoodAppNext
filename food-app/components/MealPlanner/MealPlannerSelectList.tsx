@@ -6,12 +6,10 @@ import { MealType } from "@prisma/client"
 import { useSelector } from "react-redux"
 import { RootState } from "@/redux/store"
 
-const MealPlannerSelectList = ({meals}:{meals:any[]}) => {
-    console.log(meals)
+const MealPlannerSelectList = ({meals}:{meals:Meal[]}) => {
+ 
     const selectedItems = useSelector((state:RootState)=>state.mealPlanner.selectedMeals);
-    console.log(selectedItems);
    
-
     const groupedMeals = {
         [MealType.BREAKFAST]: meals.filter(m => m.type === MealType.BREAKFAST),
         [MealType.SECOND_BREAKFAST]: meals.filter(m => m.type === MealType.SECOND_BREAKFAST),

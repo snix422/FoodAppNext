@@ -5,9 +5,9 @@ import MealItem from "./MealItem"
 import { setMeals } from "@/redux/slices/mealSlice"
 import { useSelector } from "react-redux"
 import { RootState } from "@/redux/store"
-import { MealTypeTranslation } from "@/types/types"
+import { Meal, MealTypeTranslation } from "@/types/types"
 
-const MealsList = ({meals}:{meals:any}) => {
+const MealsList = ({meals}:{meals:Meal[]}) => {
     const {filteredMeals,searchTerm,mealType} = useSelector((state:RootState)=>state.meals);
 
     useEffect(()=>{
@@ -23,9 +23,9 @@ const MealsList = ({meals}:{meals:any}) => {
             {filteredMeals.length == 0 ? <h3 className="text-lg font-bold">Brak wyników</h3> : null}
             
             <div className="flex flex-wrap justify-center gap-4"> 
-            {filteredMeals.map((m:any)=>{
+            {filteredMeals.map((m:Meal)=>{
                 return(
-                    <MealItem data={m} />
+                    <MealItem key={m.id} data={m} />
                 )
             })}
             </div>

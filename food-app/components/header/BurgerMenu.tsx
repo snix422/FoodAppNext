@@ -12,11 +12,8 @@ const BurgerMenu = () => {
     const { data: session, status } = useSession();
     const dispatch = useDispatch();
 
-    // Zmienna statusowa dla lepszej kontroli
     const isLoading = status === "loading";
     const isAuthenticated = status === "authenticated";
-    console.log(session);
-    console.log(status);
     const userEmail = session?.user?.email;
     const userRole = session?.user?.role;
 

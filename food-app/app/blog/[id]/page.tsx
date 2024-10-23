@@ -10,15 +10,13 @@ const getPostById = async (id: number) => {
         }
         return await res.json();
     } catch (error) {
-        console.error('Fetch error: ', error);
         throw new Error("Błąd z pobieraniem danych")
-        return null;
     }
 }
 
 interface PageProps {
     params: {
-        id: string; // ID jest typu string
+        id: string;
     };
 }
 

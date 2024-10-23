@@ -1,32 +1,7 @@
-import prisma from "@/prisma/client";
-import { savePostToDatabase, uploadImageToCloudinary } from "./posts";
+
+import { savePostToDatabase } from "./posts";
 import { Meal } from "@/types/types";
 
-type FormData = {
-    title: string;
-    content: string;
-    author: string;
-};
-
-/*export async function sendMeal(title:string, content:string, author:string) {
-    if (!title || !content || !author) {
-        throw new Error('All fields are required');
-    }
-
-    try {
-        // Zapisz przepis do bazy danych
-        await prisma.post.create({
-            data: {
-                title,
-                content,
-                author,
-            },
-        });
-    } catch (error) {
-        console.error('Error in sendMeal:', error);
-        throw new Error('Internal Server Error');
-    }
-}*/
 
 type FormState = {
     message: string | null;

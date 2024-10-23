@@ -1,13 +1,9 @@
 
 "use server"
 
-import cloudinary from '@/cloudinary/cloudinary';
 import { PrismaClient } from '@prisma/client';
 import FormData from 'form-data';
 import fetch from 'node-fetch';
-import { Readable } from 'stream';
-import { promises as fsPromises } from 'fs';
-import path from 'path';
 import toast from 'react-hot-toast';
 import Error from 'next/error';
 
@@ -16,12 +12,12 @@ const prisma = new PrismaClient();
 export async function savePostToDatabase(title: string, content: string, authorName: string, image:string) {
     const loadingToast = toast.loading("Dodawanie posta...")
     try {
-        // Sprawdzenie, czy autor istnieje
+       
         let author = await prisma.author.findFirst({
             where: { name: authorName }
         });
 
-        // Jeśli autor nie istnieje, stwórz nowego autora
+       
         if (!author) {
             console.log('Creating new author:', authorName);
             author = await prisma.author.create({
@@ -31,7 +27,7 @@ export async function savePostToDatabase(title: string, content: string, authorN
             });
         }
 
-        // Dodanie posta do bazy danych
+        
         await prisma.post.create({
             data: {
                 title,
@@ -41,16 +37,16 @@ export async function savePostToDatabase(title: string, content: string, authorN
             }
         });
 
-        // Powiadomienie o sukcesie
+        
         toast.success("Post został pomyślnie dodany");
         return {
             message: "Post został pomyślnie dodany",
             errors: {}
         };
     } catch (error:any) {
-        // Obsługa błędów
+        
         console.error("Błąd podczas dodawania posta:", error);
-        toast.error("Wystąpił błąd podczas dodawania posta. Spróbuj ponownie."); // Powiadomienie o błędzie
+        toast.error("Wystąpił błąd podczas dodawania posta. Spróbuj ponownie."); 
         return {
             message: "Wystąpił błąd",
             errors: error?.message || "Nieznany błąd"
@@ -62,7 +58,7 @@ export async function savePostToDatabase(title: string, content: string, authorN
 
 
 
-// utils/uploadToCloudinary.ts
+
 interface CloudinaryResponse {
     secure_url: string;
   }
@@ -74,11 +70,11 @@ interface CloudinaryResponse {
     const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`, {
         method: 'POST',
         body: form,
-        headers: form.getHeaders(), // użyj getHeaders() z form-data
+        headers: form.getHeaders(), 
     });
 
     if (!response.ok) {
-        throw new Error(`Cloudinary upload failed: ${response.statusText}`);
+        //throw new Error(`Cloudinary upload failed: ${response.statusText}`);
     }
 
     const result: CloudinaryResponse = await response.json() as CloudinaryResponse;

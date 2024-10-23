@@ -9,7 +9,6 @@ interface ImagePickerProps {
 const ImagePicker:React.FC<ImagePickerProps> = ({ label, name }) => {
     const [pickedImage, setPickedImage] = useState<string | null>(null);
 
-    // Typowanie dla imageInput
     const imageInput = useRef<HTMLInputElement>(null);
   
     function handlePickClick() {
@@ -29,7 +28,6 @@ const ImagePicker:React.FC<ImagePickerProps> = ({ label, name }) => {
         const fileReader = new FileReader();
 
         fileReader.onload = () => {
-            // Rzutowanie `result` na `string` w przypadku, gdy `result` jest typu `string`
             if (fileReader.result && typeof fileReader.result === 'string') {
                 setPickedImage(fileReader.result);
             }

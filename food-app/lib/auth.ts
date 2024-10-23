@@ -1,4 +1,3 @@
-import { RegisterForm } from "@/types/types";
 import { signIn, signOut } from "next-auth/react";
 
 export interface SignInResult {
@@ -6,7 +5,7 @@ export interface SignInResult {
   }
   
   export const authenticateUser = async (email: string, password: string): Promise<SignInResult> => {
-    // Prosta walidacja adresu email i hasła
+    
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       return { error: "Nieprawidłowy adres email" };
     }
@@ -16,7 +15,7 @@ export interface SignInResult {
     }
   
     try {
-      // Próba zalogowania przy użyciu next-auth
+      
       const result = await signIn('credentials', {
         redirect: false,
         email,
@@ -56,6 +55,6 @@ export interface SignInResult {
 
 export const handleLogout = async () => {
   await signOut({ 
-    redirect: true, // Przekierowuje użytkownika po wylogowaniu
-    callbackUrl: '/' // Strona, na którą użytkownik zostanie przekierowany po wylogowaniu
+    redirect: true,
+    callbackUrl: '/' 
   })}

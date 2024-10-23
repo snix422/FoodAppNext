@@ -14,7 +14,7 @@ export default async function handler(
                 id: true,
                 title: true,
                 description: true,
-                price: true, 
+                price: true,
             },
         });
         console.log(offers);

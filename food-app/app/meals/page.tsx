@@ -2,7 +2,6 @@
 
 import FilterOptions from "@/components/Meals/FilterOptions";
 import MealHeadingTitle from "@/components/Meals/MealHeadingTitle";
-import MealItem from "@/components/Meals/MealItem"
 import MealsList from "@/components/Meals/MealsList"
 import DefaultPlaceholder from "@/components/Placeholders/DefaultPlaceholder";
 import { setMeals } from "@/redux/slices/mealSlice";
@@ -13,7 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 const Meals = () => {
-    //const meals = await getMeals();
     const [loading,setLoading] = useState(false)
     const [error, setError] = useState<null|string>(null);
     const dispatch:AppDispatch = useDispatch();
@@ -34,12 +32,12 @@ const Meals = () => {
           dispatch(setMeals(data));
         } catch (err) {
           if (err instanceof Error) {
-            setError(err.message); // Ustaw komunikat błędu
+            setError(err.message); 
           } else {
-            setError("Wystąpił nieznany błąd"); // Obsługa błędów nieznanego typu
+            setError("Wystąpił nieznany błąd");
           }
         } finally {
-          setLoading(false); // Ustaw stan ładowania na false niezależnie od sukcesu czy błędu
+          setLoading(false);
         }
       };
     

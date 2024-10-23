@@ -7,12 +7,6 @@ import ImagePicker from "./ImagePicker";
 const CreateForm = () => {
     const [state,formAction,pending] = useFormState(sendPost,{title:null,content:null,author:null});
 
-    /*const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        const formData = new FormData(e.target as HTMLFormElement);
-        await formAction();
-    };*/
-
     return(
         <form action={formAction} className="flex flex-col items-center w-[20vw]">
         <div className="flex flex-col items-center w-full mt-8">

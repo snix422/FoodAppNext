@@ -1,6 +1,5 @@
 import AddYourMealsOffer from "@/components/Offers/AddYourMealsOffer";
 import DefaultPlaceholder from "@/components/Placeholders/DefaultPlaceholder";
-import Image from "next/image";
 import React, { Suspense } from "react";
 const OffersContainer = React.lazy(() => import('@/components/Offers/OffersContainer'));
 const LatestPosts = React.lazy(()=>import("@/components/Blog/LatestPosts"));

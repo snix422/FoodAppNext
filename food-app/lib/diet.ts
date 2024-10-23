@@ -4,9 +4,8 @@ export const getDiet = async (userId:number) => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            // Brak potrzeby dodawania ciasteczek ręcznie, jeśli są prawidłowo ustawione w aplikacji
           },
-          credentials: 'include' // Upewnij się, że ciasteczka są wysyłane z żądaniem
+          credentials: 'include' 
         });
     
         if (!response.ok) {

@@ -1,14 +1,11 @@
 "use client"
 
-import { MealTypeTranslation } from "@/types/types"
+import { Meal, MealTypeTranslation } from "@/types/types"
 import { MealType } from "@prisma/client";
 import Image from "next/image";
 import ButtonDetails from "./ButtonDetails";
-import { useDispatch, useSelector } from "react-redux";
-import { setSelectedMeal } from "@/redux/slices/mealPlannerSlice";
-import { RootState } from "@/redux/store";
 
-const MealItem = ({data}:{data:any}) => {
+const MealItem = ({data}:{data:Meal}) => {
    
     const mealType: MealType = data.type;
     console.log(data);
@@ -26,7 +23,7 @@ const MealItem = ({data}:{data:any}) => {
             </div>
             <h2 className="text-lg font-bold">{data.title}</h2>
             <p>{MealTypeTranslation[mealType]}</p>
-            <ButtonDetails title={data.id} />
+            <ButtonDetails title={data.title} />
         </div>
     )
 }

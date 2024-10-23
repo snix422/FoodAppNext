@@ -1,23 +1,21 @@
 "use client"
 
+import { OfferType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 
-const OfferItemPage = ({ data }: { data: any }) => {
+const OfferItemPage = ({ data }: { data: OfferType }) => {
     return (
         <div className="flex flex-col sm:flex-row gap-4 p-4">
-        {/* Obrazek */}
         <div className="relative w-full sm:w-1/2 h-64 sm:h-auto">
             <Image
                 className="rounded-lg"
-                src={data.imageUrl || "/offer/salad-2756467_1280.jpg"}
+                src={"/offer/salad-2756467_1280.jpg"}
                 alt="Obrazek oferty"
                 layout="fill"
                 objectFit="cover"
             />
         </div>
-
-        {/* Treść */}
         <div className="w-full sm:w-1/2 flex flex-col gap-4 p-4">
             <h2 className="text-2xl font-bold">{data.title}</h2>
             <p className="text-gray-700">{data.description}</p>

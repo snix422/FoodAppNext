@@ -6,7 +6,6 @@ const getData = async () => {
         }
         return res.json();
     } catch (error) {
-        console.error('Error fetching data:', error);
         return { lognContent: 'No content available' };
     }
 }

@@ -14,17 +14,11 @@ const Header = () => {
     const { data: session, status } = useSession();
     const dispatch = useDispatch();
 
-    // Zmienna statusowa dla lepszej kontroli
+
     const isLoading = status === "loading";
     const isAuthenticated = status === "authenticated";
-    console.log(session);
-    console.log(status);
     const userEmail = session?.user?.email;
     const userRole = session?.user?.role;
-
-
-    console.log(userEmail);
-    console.log(userRole,'role');
 
     const openMenu = () => {
         dispatch(toogleMenu())
@@ -32,7 +26,6 @@ const Header = () => {
    
     return(
         <>
-        
         <header className="flex max-w-[100vw] bg-purple-300 justify-around items-center py-3 relative">
             <span className="text-4xl"><Link href={"/"}>YourFood</Link></span>
             <nav className="w-3/5 h-full">
@@ -41,15 +34,13 @@ const Header = () => {
                     <li><Link className="text-xl" href={"/meals"}>Przepisy</Link></li>
                     {userRole === "user" ? <>
                         <li><Link className="text-xl" href={"/meal-planner"}>Stwórz dietę dla siebie</Link></li>
-                        <li><Link className="text-xl" href={"/add-recipe"}>Dodaj przepis</Link></li>
+                        
                         <li><Link className="text-xl" href={"/your-individual-diet"}>Twoje diety</Link></li>
                     </> : null }
                     {userRole === "admin" ? 
                     <li><Link className="text-xl" href={"/create-post"}>Dodaj post</Link></li>    
                     : null}
                     <li><Link className="text-xl" href={"/blog"}>Blog</Link></li>
-                    <li><Link className="text-xl" href={"/contact"}>Kontakt</Link></li>
-                    <li><Link className="text-xl" href={"/about"}>O nas</Link></li>
                     {!isAuthenticated ? <>
                         <li><Link className="text-xl" href={"/auth/signIn"}>Logowanie</Link></li>
                         <li><Link className="text-xl" href={"/auth/signUp"}>Rejestracja</Link></li>

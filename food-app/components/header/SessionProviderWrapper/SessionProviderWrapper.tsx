@@ -1,4 +1,4 @@
-'use client'; // Oznacza komponent klienta
+'use client';
 
 import { SessionProvider } from 'next-auth/react';
 

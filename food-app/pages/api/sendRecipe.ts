@@ -16,21 +16,6 @@ interface MealData {
   type: MealType;
 }
 
-/*interface RequestBody {
-  userId: string;
-  meals: MealData[];
-}*/
-
-/*interface RequestBody {
-  userId: string;
-  meals: {
-    sniadanieId?: number;
-    drugieSniadanieId?: number;
-    obiadId?: number;
-    kolacjeId?: number;
-  };
-}*/
-
 export default async function saveMeals(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
@@ -40,14 +25,14 @@ export default async function saveMeals(req: NextApiRequest, res: NextApiRespons
       const lunch = meals.find((m:any)=> m.type === "LUNCH");
       const dinner = meals.find((m:any)=> m.type === "DINNER");
       console.log(sniadanie);
-      // Walidacja danych
+     
       if (!userId || !meals) {
         return res.status(400).json({ message: 'Invalid data' });
       }
 
       const userIdInt = parseInt(userId, 10);
 
-      // Tworzenie nowego rekordu
+    
       await prisma.userDiet.create({
         data: {
           userId: userIdInt,

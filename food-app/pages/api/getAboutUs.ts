@@ -8,7 +8,7 @@ export default async function handler(
     res: NextApiResponse
 ) {
     try {
-        const data = await prisma.aboutUs.findFirst(); // Pobiera pierwszy rekord bez określonych kryteriów
+        const data = await prisma.aboutUs.findFirst(); 
 
         if (!data) {
             return res.status(404).json({ error: 'Record not found' });

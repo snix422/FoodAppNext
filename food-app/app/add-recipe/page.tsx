@@ -1,16 +1,9 @@
 "use client"
 
 import { useState } from "react";
-import { useFormState } from 'react-dom';
-
-interface RecipeFormData {
-    title: string;
-    content: string;
-    author: string;
-}
 
 const AddRecipe = () => {
-    //const [state, formAction] = useFormState(sendRecipe, {message:""});
+
     const [ingredients, setIngredients] = useState<any>([{ name: "", quantity: "" }]);
 
     const handleInputChange = (index:any, event:any

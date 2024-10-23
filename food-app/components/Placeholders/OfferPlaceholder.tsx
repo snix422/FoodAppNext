@@ -10,7 +10,7 @@ const OfferPlaceholder:React.FC<DefaultPlaceholderProps> = ({lines,height}) => {
                 <div
                     key={i}
                     className="animate-pulse bg-gray-300 rounded-lg mb-2 w-[80vw]"
-                    style={{ height: `${height}px` }} // Ustawienie wysokości za pomocą stylów inline
+                    style={{ height: `${height}px` }} 
                 />
             ))}
         </div>

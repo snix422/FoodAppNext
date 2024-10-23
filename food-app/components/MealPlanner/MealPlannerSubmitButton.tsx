@@ -16,13 +16,9 @@ const MealPlannerSubmitButton = () => {
     const { data: session, status } = useSession();
     const dispatch = useDispatch();
     const router = useRouter();
-    const [isMounted, setIsMounted] = useState(false);
-    
 
     const userId = session?.user.id;
    
-   
-
     const handleSubmit = async () => {
         setLoading(true);
         setError(null);
@@ -35,19 +31,18 @@ const MealPlannerSubmitButton = () => {
         }
 
         try {
-            // Wywołanie funkcji z lib z odpowiednimi parametrami
             await saveMeals({
-                userId: String(userId), // Zaktualizuj ID użytkownika odpowiednio
+                userId: String(userId), 
                 meals: selectedItems,
             });
             dispatch(clearSelectedMeals())
             toast.success("Pomyślnie dodano diete")
             router.push("/")
-            console.log('Meals saved successfully');
+
         } catch (err:any) {
             setError(err.message);
             toast.error("Nie udało się dodać diety")
-            console.error('Error:', err);
+           
         } finally {
             setLoading(false);
             toast.dismiss(loadingToast);

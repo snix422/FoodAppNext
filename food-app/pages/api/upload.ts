@@ -12,8 +12,8 @@ export const config = {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const form = new IncomingForm({
     uploadDir: path.join(process.cwd(), 'public/uploads'),
-    keepExtensions: true, // Zachowuje rozszerzenia plików
-    maxFileSize: 10 * 1024 * 1024, // Maksymalny rozmiar pliku: 10MB
+    keepExtensions: true, 
+    maxFileSize: 10 * 1024 * 1024, 
   });
 
   form.parse(req, (err:any, fields:any, files:any) => {
@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    // Wygeneruj pełną ścieżkę do pliku
+    
     const filePath = `/uploads/${path.basename(file.filepath)}`;
 
     res.status(200).json({ imageUrl: filePath });

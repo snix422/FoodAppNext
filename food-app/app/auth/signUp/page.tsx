@@ -1,7 +1,6 @@
 "use client"
 
 import { registerUser } from "@/lib/auth";
-import prisma from "@/prisma/client";
 import { RegisterForm } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react"
@@ -72,30 +71,6 @@ export default function SignUp(){
       toast.dismiss(loadingToast)
     }
     }
-
-    /*const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        
-        if (password !== confirmPassword) {
-          setError("Passwords do not match");
-          return;
-        }
-        
-        const res = await fetch('/api/auth/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password })
-        });
-    
-        if (res.ok) {
-          router.push('/auth/signIn');
-        } else {
-          const data = await res.json();
-          setError(data.error || 'An error occurred');
-        }
-      };*/
 
     return(
         <main className="w-[100vw] h-[80vh] flex flex-col justify-center items-center">

@@ -4,7 +4,7 @@ export interface OfferType {
     id: number;
     title: string;
     description: string;
-    price: number; // Upewnij się, że `price` jest opcjonalne lub może być null
+    price: number;
 }
 
 export const MealTypeTranslation: Record<MealType, string> = {

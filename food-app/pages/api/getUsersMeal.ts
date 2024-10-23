@@ -19,7 +19,6 @@ export default async function getUserMeals(req: NextApiRequest, res: NextApiResp
         return res.status(404).json({ message: 'User meals not found' });
       }
 
-      // Parse JSON to get full meal data
       const meals = JSON.parse(userMeal.meals as string);
 
       return res.status(200).json({ meals });

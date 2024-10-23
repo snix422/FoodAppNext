@@ -31,13 +31,9 @@ const yourIndividualDiet =  () => {
           }
         };
     
-        fetchDiets(); // Wywołanie funkcji asynchronicznej
+        fetchDiets(); 
       }, [session?.user.id])
    
-    //const diets = await getDiet();
-    console.log(diets);
-    console.log(session?.user.id)
-
     if(error){
       <main className="w-full h-screen flex flex-col items-center justify-center">
       <h1 className="text-3xl text-red-500">Wystąpił błąd!</h1>

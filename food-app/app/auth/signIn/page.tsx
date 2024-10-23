@@ -2,7 +2,6 @@
 
 import { authenticateUser } from "@/lib/auth";
 import { LoginForm } from "@/types/types";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -14,8 +13,6 @@ export interface FormData {
 }
 
 export default function SignIn() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const router = useRouter();
@@ -63,21 +60,7 @@ export default function SignIn() {
       }
     }
 
-    /*const loginUser = async (e: React.FormEvent) => {
-        e.preventDefault();
-    
-        const result = await signIn('credentials', {
-          redirect: false,
-          email,
-          password,
-        });
-    
-        if (result?.error) {
-          setError(result.error);
-        } else {
-          router.push('/');
-        }
-      };*/
+  
 
     return (
         <main className="w-[100vw] h-[80vh] flex flex-col justify-center items-center">

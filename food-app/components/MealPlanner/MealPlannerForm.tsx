@@ -2,15 +2,14 @@
 
 import { setSelectedMeal } from "@/redux/slices/mealPlannerSlice";
 import { RootState } from "@/redux/store";
+import { Meal } from "@/types/types";
 import { MealType } from "@prisma/client";
 import { useDispatch, useSelector } from "react-redux";
 
-const MealPlannerForm = ({meals}:{meals:any}) => {
+const MealPlannerForm = ({meals}:{meals:Meal[]}) => {
     const dispatch = useDispatch();
     const { selectedMeals } = useSelector((state: RootState) => state.mealPlanner);
-    console.log(meals);
-    console.log(selectedMeals);
-
+  
     const getFilteredMeals = (mealType: MealType) => {
         return meals.filter((meal:any) => meal.type === mealType);
       };

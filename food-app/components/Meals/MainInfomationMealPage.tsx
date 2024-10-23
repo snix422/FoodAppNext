@@ -7,7 +7,6 @@ interface MainInformationMealPageProps {
 }
 
 const MainInformationMealPage :React.FC<MainInformationMealPageProps> = ({data}) => {
-    console.log(data);
     return(
         <div className="w-[100vw] h-[100vh] flex max-xl:flex-col max-xl:items-center items-center pt-12">
     <div className="w-[50%] h-[50vh] max-xl:w-[70%] max-xl:h-[50vh] relative">

@@ -4,7 +4,7 @@ import PostsList from "./PostsList";
 const getLatestPosts = async () => {
     const res = await fetch(`${process.env.BASE_URL}/api/getLatestPost`);
     if(!res.ok){
-        console.log(res)
+        throw new Error("Wystąpił problem z pobraniem ostatnich postów")
     }
     return res.json();
 }

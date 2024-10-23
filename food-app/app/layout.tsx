@@ -1,12 +1,8 @@
-
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
-import { SessionProvider } from "next-auth/react";
 import SessionProviderWrapper from "@/components/header/SessionProviderWrapper/SessionProviderWrapper";
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
 import ReduxProvider from "@/components/Providers/ReduxProvider";
 import { Toaster } from "react-hot-toast";
 
