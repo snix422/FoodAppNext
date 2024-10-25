@@ -23,7 +23,7 @@ const MealItem = ({data}:{data:Meal}) => {
             </div>
             <h2 className="text-lg font-bold">{data.title}</h2>
             <p>{MealTypeTranslation[mealType]}</p>
-            <ButtonDetails title={data.title} />
+            <ButtonDetails id={data.id} />
         </div>
     )
 }

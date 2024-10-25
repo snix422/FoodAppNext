@@ -19,8 +19,9 @@ interface MealPageProps {
 }
 
 const MealPage : React.FC<MealPageProps> = async ({params}) => {
-    const title = params.id;
-    const meal = await getOfferByTitle(title);
+    const id = params.id;
+    console.log(params);
+    const meal = await getOfferByTitle(id);
     return(
         <main className="w-[100vw] h-[100vh]">
             <MainInformationMealPage data={meal} />
