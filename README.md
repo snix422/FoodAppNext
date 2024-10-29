@@ -106,11 +106,11 @@ The app is scalable and structured efficiently, leveraging Next.js's dynamic rou
 
 - Na rysunku została przedstawiona strona dla danego wpisu blogowego
 
-![Dodawanie planu jedzeniowego]()
+![Dodawanie planu jedzeniowego](https://i.imgur.com/JW95PGf.png)
 
 - Widok przedstawia formularz dodawania planu żywnościowego, który użytkownik może sam dodać według swojej preferencji ale tylko kiedy jest zalogowany
 
-![Widok dodawania posta na stronie]()
+![Widok dodawania posta na stronie](https://i.imgur.com/4Gi5Ddo.png)
 
 - Na rysunku został zaprezentowany formularz dodawania wpisu na bloga. Ta podstrona jest dostępna tylko dla admina aplikacji
 
