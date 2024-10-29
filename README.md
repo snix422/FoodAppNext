@@ -4,7 +4,7 @@ Follow these steps to set up the project:
 
 1. Clone the repo
 ```sh
-  https://github.com/snix422/Gaming-Shop-App.git
+  https://github.com/snix422/FoodAppNext.git
 ```
 2. Navigate to your project directory
 ```sh
