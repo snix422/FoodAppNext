@@ -8,12 +8,21 @@ Follow these steps to set up the project:
 ```
 2. Navigate to your project directory
 ```sh
-  cd Gaming-Shop-App
+  cd food-app
 ```
 
 3. Install yarn packages
 ```sh
   npm install
+```
+
+4. Run app
+```sh
+  npm run dev
+```
+5. Copy localhost to your website url
+```sh
+  localhost:3000
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
