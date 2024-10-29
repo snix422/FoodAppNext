@@ -122,8 +122,3 @@ The app is scalable and structured efficiently, leveraging Next.js's dynamic rou
 ![Widok dodawania posta na stronie](https://i.imgur.com/4Gi5Ddo.png)
 
 - Na rysunku został zaprezentowany formularz dodawania wpisu na bloga. Ta podstrona jest dostępna tylko dla admina aplikacji
-
-
-## Link 
-
-   [Link to project](https://tourmaline-nougat-fb3109.netlify.app/)
