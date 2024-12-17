@@ -4,7 +4,7 @@ Follow these steps to set up the project:
 
 1. Clone the repo
 ```sh
-  https://github.com/snix422/Gaming-Shop-App.git
+  https://github.com/snix422/FoodAppNext.git
 ```
 2. Navigate to your project directory
 ```sh
@@ -26,15 +26,6 @@ Follow these steps to set up the project:
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<a name="usage"></a>
-## Usage
-
-To run the project locally, use the following command:
-
-```sh
-  npm start
-```
 
 ## Built With
 - NextJs
@@ -122,8 +113,3 @@ The app is scalable and structured efficiently, leveraging Next.js's dynamic rou
 ![Widok dodawania posta na stronie](https://i.imgur.com/4Gi5Ddo.png)
 
 - Na rysunku został zaprezentowany formularz dodawania wpisu na bloga. Ta podstrona jest dostępna tylko dla admina aplikacji
-
-
-## Link 
-
-   [Link to project](https://tourmaline-nougat-fb3109.netlify.app/)
