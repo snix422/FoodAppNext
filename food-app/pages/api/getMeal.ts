@@ -13,7 +13,7 @@ export default async function handler(
 
     try {
         const meal = await prisma.meal.findUnique({
-            where: { id: id},
+            where: { id: Number(id)},
         });
 
         if (!meal) {
