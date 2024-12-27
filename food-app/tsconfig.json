@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2020",  // Ustawia docelową wersję ECMAScript
-    "module": "commonjs",  // Ustawia moduły na CommonJS (typowe dla Node.js)
-    "lib": ["dom", "dom.iterable", "esnext"],  // Definiuje używane biblioteki
-    "allowJs": true,  // Pozwala na używanie plików JavaScript
-    "skipLibCheck": true,  // Pomija sprawdzanie typów w plikach bibliotecznych
-    "strict": true,  // Włącza wszystkie opcje ścisłej kontroli typów
-    "noEmit": true,  // Nie generuje plików wyjściowych
-    "esModuleInterop": true,  // Umożliwia używanie importów ES6 z modułami CommonJS
-    "moduleResolution": "node",  // Ustawia rozwiązywanie modułów na Node.js
-    "resolveJsonModule": true,  // Pozwala na importowanie plików JSON
-    "isolatedModules": true,  // Sprawdza pliki w izolacji
-    "jsx": "preserve",  // Zachowuje JSX w kodzie
-    "incremental": true,  // Włącza kompilację inkrementalną
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "types": ["jest", "@testing-library/jest-dom", "node"],
     "plugins": [
       {
         "name": "next"
@@ -22,7 +23,15 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prisma/**/*.ts", "prisma/seed.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "prisma/**/*.ts",
+    "prisma/seed.js"
+  ],
   "exclude": ["node_modules"]
 }
+
 
