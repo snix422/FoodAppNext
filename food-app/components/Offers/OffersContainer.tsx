@@ -1,13 +1,8 @@
+import { getOffers } from "@/libs/api/getOffers";
 import HeadingOfferTitle from "./HeadingOfferTitle";
 import OffersList from "./OffersList";
 
-const getOffers = async () => {
-    const res = await fetch(`${process.env.BASE_URL}/api/getOffers`);
-    if(!res.ok){
-        throw new Error("Wystąpił błąd z pobraniem ofert")
-    }
-    return res.json();
-}
+
 
 const OffersContainer = async () => {
     const offers = await getOffers();

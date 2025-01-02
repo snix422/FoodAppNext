@@ -1,14 +1,9 @@
 import HeadingTitle from "@/components/Blog/HeadingTitle";
 import PostsList from "@/components/Blog/PostsList";
+import { getPosts } from "@/libs/api/getPosts";
 import { Post } from "@prisma/client";
 
-const getPosts = async () => {
-    const res = await fetch(`${process.env.BASE_URL}/api/getPosts`);
-    if(!res.ok){
-        throw new Error(`Nie udało się pobrać postów ${res.status}`)
-    }
-    return res.json()
-}
+
 
 const Blog = async () => {
     const posts : Post[] = await getPosts();

@@ -2,15 +2,10 @@
 import MealPlannerSelectList from "@/components/MealPlanner/MealPlannerSelectList";
 import MealPlannerSubmitButton from "@/components/MealPlanner/MealPlannerSubmitButton";
 import MealPlannerTitle from "@/components/MealPlanner/MealPlannerTitle";
+import { getMeals } from "@/libs/api/getMeals";
 
 
-const getMeals = async () => {
-    const res = await fetch("http://localhost:3000/api/getMeals");
-    if(!res.ok){
-      throw new Error(`Nie udało się pobrać posiłków ${res.status}`);
-    }
-    return res.json();
-}
+
 
 const mealPlannerPage = async () => {
   const meals = await getMeals();

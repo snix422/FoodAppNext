@@ -1,13 +1,7 @@
+import { getLatestPosts } from "@/libs/api/getLatestPosts";
 import HeadingTitle from "./HeadingTitle";
 import PostsList from "./PostsList";
 
-const getLatestPosts = async () => {
-    const res = await fetch(`${process.env.BASE_URL}/api/getLatestPost`);
-    if(!res.ok){
-        throw new Error("Wystąpił problem z pobraniem ostatnich postów")
-    }
-    return res.json();
-}
 
 const LatestPosts = async () => {
     const latestPosts = await getLatestPosts();
