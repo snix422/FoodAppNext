@@ -1,4 +1,5 @@
 import MainInformationMealPage from "@/components/Meals/MainInfomationMealPage";
+import { getMealById } from "@/libs/api/getMealById";
 
 const getOfferByTitle = async (id:number) => {
     try {
@@ -21,7 +22,7 @@ interface MealPageProps {
 const MealPage : React.FC<MealPageProps> = async ({params}) => {
     const id = params.id;
     console.log(params);
-    const meal = await getOfferByTitle(id);
+    const meal = await getMealById(id);
     return(
         <main className="w-[100vw] h-[100vh]">
             <MainInformationMealPage data={meal} />
