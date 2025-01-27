@@ -35,22 +35,15 @@ jest.mock('../components/PostItem', () => {
 
 describe('PostsList Component', () => {
     it('renders all posts correctly', () => {
-       
         render(<PostsList posts={mockPosts} />);
-
-        // Check if all posts are rendered
         const postItems = screen.getAllByTestId("post-item")
         expect(postItems).toHaveLength(mockPosts.length);
-
-        // Check content of first post
         expect(postItems[0]).toHaveTextContent(mockPosts[0].title);
         expect(postItems[1]).toHaveTextContent(mockPosts[1].title);
     });
 
     it('renders an empty list when no posts are provided', () => {
         render(<PostsList posts={[]} />);
-
-        // Assert no post items are rendered
         const postItems = screen.queryAllByTestId('post-item');
         expect(postItems).toHaveLength(0);
     });

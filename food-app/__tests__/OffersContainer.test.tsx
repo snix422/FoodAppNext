@@ -23,21 +23,13 @@ jest.mock('../components/OffersList', () => ({ offers }: { offers: any[] }) => (
 
 describe('OffersContainer Component', () => {
     it('renders offers correctly', async () => {
-      
         const mockOffers = [
             { id: 1, name: 'Offer 1', price: 100 },
             { id: 2, name: 'Offer 2', price: 200 },
         ];
-
-       
         (getOffers as jest.Mock).mockResolvedValue(mockOffers);
-
-     
         render(<OffersContainer />);
-
- 
         expect(screen.getByTestId('heading-title')).toHaveTextContent('Nasza oferta');
-
         await waitFor(() => {
             const offersList = screen.getByTestId('offers-list');
             expect(offersList).toBeInTheDocument();
@@ -52,11 +44,8 @@ describe('OffersContainer Component', () => {
     });
 
     it('handles empty offers', async () => {
-   
         (getOffers as jest.Mock).mockResolvedValue([]);
-
         render(<OffersContainer />);
-
         await waitFor(() => {
             const offersList = screen.getByTestId('offers-list');
             expect(offersList).toBeInTheDocument();
