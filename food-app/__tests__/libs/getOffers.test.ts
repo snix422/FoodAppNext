@@ -1,11 +1,11 @@
-import { getOffers } from "@/libs/api/getOffers"; // Zakładam, że masz funkcję getOffers w tym pliku
+import { getOffers } from "@/libs/api/getOffers"; 
 
-// Mockowanie globalnej funkcji fetch
+
 global.fetch = jest.fn();
 
 describe('getOffers', () => {
     afterEach(() => {
-        jest.clearAllMocks(); // Czyszczenie mocków po każdym teście
+        jest.clearAllMocks(); 
     });
 
     it('zwraca oferty, jeśli API zwraca poprawne dane', async () => {
@@ -14,7 +14,7 @@ describe('getOffers', () => {
             { id: '2', title: 'Offer 2', description: 'Description of Offer 2', price: 200 },
         ];
 
-        // Mockowanie odpowiedzi fetch
+        
         (fetch as jest.Mock).mockResolvedValueOnce({
             ok: true,
             json: jest.fn().mockResolvedValueOnce(mockOffers),
@@ -22,13 +22,13 @@ describe('getOffers', () => {
 
         const offers = await getOffers();
 
-        expect(offers).toEqual(mockOffers); // Sprawdzamy, czy zwrócone dane to mockowane oferty
+        expect(offers).toEqual(mockOffers);
         expect(fetch).toHaveBeenCalledTimes(1);
-        expect(fetch).toHaveBeenCalledWith('http://localhost:3000/api/getOffers'); // Sprawdzamy wywołany URL
+        expect(fetch).toHaveBeenCalledWith('http://localhost:3000/api/getOffers'); 
     });
 
     it('rzuca błąd, jeśli odpowiedź API jest niepoprawna', async () => {
-        // Mockowanie odpowiedzi z błędem (np. 500)
+       
         (fetch as jest.Mock).mockResolvedValueOnce({
             ok: false,
             status: 500,
@@ -41,7 +41,7 @@ describe('getOffers', () => {
     });
 
     it('rzuca błąd, jeśli fetch rzuci wyjątek', async () => {
-        // Mockowanie wyjątku (np. błąd sieci)
+       
         (fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
 
         await expect(getOffers()).rejects.toThrow('Wystąpił problem z pobraniem ofert Error: Network error');

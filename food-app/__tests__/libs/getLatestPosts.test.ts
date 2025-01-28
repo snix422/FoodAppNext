@@ -1,11 +1,11 @@
 import { getLatestPosts } from "@/libs/api/getLatestPosts";
 
 
-global.fetch = jest.fn(); // Mockowanie globalnej funkcji fetch
+global.fetch = jest.fn(); 
 
 describe('getLatestPosts', () => {
     afterEach(() => {
-        jest.clearAllMocks(); // Czyszczenie mocków po każdym teście
+        jest.clearAllMocks(); 
     });
 
     it('zwraca posty, jeśli API zwraca poprawne dane', async () => {
@@ -19,9 +19,6 @@ describe('getLatestPosts', () => {
             json: jest.fn().mockResolvedValueOnce(mockPosts),
         });
 
-        const posts = await getLatestPosts();
-
-        //expect(posts).toEqual(mockPosts);
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(fetch).toHaveBeenCalledWith(`${process.env.BASE_URL}/api/getLatestPost`);
     });

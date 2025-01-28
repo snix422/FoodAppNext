@@ -1,12 +1,11 @@
-import { getMeals } from "@/libs/api/getMeals"; // Zakładam, że masz funkcję getMeals w tym pliku
+import { getMeals } from "@/libs/api/getMeals"; 
 import { NextApiRequest, NextApiResponse } from "next";
 
-// Mockowanie globalnej funkcji fetch
 global.fetch = jest.fn();
 
 describe('getMeals', () => {
     afterEach(() => {
-        jest.clearAllMocks(); // Czyszczenie mocków po każdym teście
+        jest.clearAllMocks(); 
     });
 
     it('zwraca posiłki, jeśli API zwraca poprawne dane', async () => {
@@ -15,7 +14,6 @@ describe('getMeals', () => {
             { id: '2', name: 'Meal 2', description: 'Tasty meal 2', price: 15.0 },
         ];
 
-        // Mockowanie odpowiedzi fetch
         (fetch as jest.Mock).mockResolvedValueOnce({
             ok: true,
             json: jest.fn().mockResolvedValueOnce(mockMeals),
@@ -23,13 +21,13 @@ describe('getMeals', () => {
 
         const meals = await getMeals();
 
-        expect(meals).toEqual(mockMeals); // Sprawdzamy, czy zwrócone dane to mockowane posiłki
+        expect(meals).toEqual(mockMeals); 
         expect(fetch).toHaveBeenCalledTimes(1);
-        expect(fetch).toHaveBeenCalledWith(`${process.env.BASE_URL}/api/getMeals`); // Sprawdzamy wywołany URL
+        expect(fetch).toHaveBeenCalledWith(`${process.env.BASE_URL}/api/getMeals`); 
     });
 
     it('rzuca błąd, jeśli odpowiedź API jest niepoprawna', async () => {
-        // Mockowanie odpowiedzi z błędem (np. 500)
+       
         (fetch as jest.Mock).mockResolvedValueOnce({
             ok: false,
             status: 500,
@@ -42,7 +40,7 @@ describe('getMeals', () => {
     });
 
     it('rzuca błąd, jeśli fetch rzuci wyjątek', async () => {
-        // Mockowanie wyjątku (np. błąd sieci)
+       
         (fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
 
         await expect(getMeals()).rejects.toThrow('Network error');
@@ -50,15 +48,15 @@ describe('getMeals', () => {
     });
 
     it('zwraca pustą tablicę, jeśli API zwraca brak posiłków', async () => {
-        // Mockowanie odpowiedzi z pustą tablicą
+        
         (fetch as jest.Mock).mockResolvedValueOnce({
             ok: true,
-            json: jest.fn().mockResolvedValueOnce([]), // Pusta tablica
+            json: jest.fn().mockResolvedValueOnce([]), 
         });
 
         const meals = await getMeals();
 
-        expect(meals).toEqual([]); // Sprawdzamy, czy zwrócone dane to pusta tablica
+        expect(meals).toEqual([]); 
         expect(fetch).toHaveBeenCalledTimes(1);
     });
 });
